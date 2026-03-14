@@ -12,7 +12,7 @@
 - Rebuilt the iOS app successfully in the simulator
 - Confirmed the app launches to the default React Native intro screen
 - Reduced the large warning list down to a much smaller set
-- Added a public `DEVLOG.md` file to track progress
+- Added a public `DEVLOG` file to track progress
 
 ### Struggles
 
