@@ -6,6 +6,7 @@ inhibit_all_warnings!
 
 prepare_react_native_project!
 
+ENV['RCT_HERMES_V1_ENABLED'] = '0'
 ENV['RCT_NEW_ARCH_ENABLED'] = '0'
 ENV['RCT_USE_PREBUILT_RNCORE'] = '0'
 $RNFirebaseAsStaticFramework = true
