@@ -35,6 +35,79 @@
 	</dict>
 	<key>RCTNewArchEnabled</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>AntDesign.ttf</string>
+		<string>Entypo.ttf</string>
+		<string>EvilIcons.ttf</string>
+		<string>Feather.ttf</string>
+		<string>FontAwesome.ttf</string>
+		<string>FontAwesome5_Brands.ttf</string>
+		<string>FontAwesome5_Regular.ttf</string>
+		<string>FontAwesome5_Solid.ttf</string>
+		<string>FontAwesome6_Brands.ttf</string>
+		<string>FontAwesome6_Regular.ttf</string>
+		<string>FontAwesome6_Solid.ttf</string>
+		<string>Fontisto.ttf</string>
+		<string>Foundation.ttf</string>
+		<string>Ionicons.ttf</string>
+		<string>Lucide.ttf</string>
+		<string>MaterialDesignIcons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>Octicons.ttf</string>
+		<string>SimpleLineIcons.ttf</string>
+		<string>Zocial.ttf</string>
+		<string>Cherry-Blossom.otf</string>
+		<string>BananaChips-Regular.otf</string>
+		<string>NotoSans-Regular.ttf</string>
+		<string>Montserrat-LightItalic.ttf</string>
+		<string>OpenSans-SemiBold.ttf</string>
+		<string>Montserrat-Medium.ttf</string>
+		<string>NotoSans-Medium.ttf</string>
+		<string>Montserrat-BoldItalic.ttf</string>
+		<string>Montserrat-Light.ttf</string>
+		<string>Montserrat-ThinItalic.ttf</string>
+		<string>NotoSans-MediumItalic.ttf</string>
+		<string>Montserrat-ExtraLight.ttf</string>
+		<string>Montserrat-Thin.ttf</string>
+		<string>NotoSans-Black.ttf</string>
+		<string>NotoSans-Bold.ttf</string>
+		<string>OpenSans-Light.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
+		<string>NotoSans-Thin.ttf</string>
+		<string>Montserrat-MediumItalic.ttf</string>
+		<string>OpenSans-Italic.ttf</string>
+		<string>Montserrat-BlackItalic.ttf</string>
+		<string>OpenSans-MediumItalic.ttf</string>
+		<string>NotoSans-SemiBold.ttf</string>
+		<string>OpenSans-ExtraBold.ttf</string>
+		<string>Montserrat-SemiBold.ttf</string>
+		<string>OpenSans-LightItalic.ttf</string>
+		<string>Montserrat-ExtraLightItalic.ttf</string>
+		<string>NotoSans-SemiBoldItalic.ttf</string>
+		<string>Montserrat-ExtraBold.ttf</string>
+		<string>NotoSans-LightItalic.ttf</string>
+		<string>OpenSans-Bold.ttf</string>
+		<string>NotoSans-Light.ttf</string>
+		<string>Montserrat-Black.ttf</string>
+		<string>OpenSans-SemiBoldItalic.ttf</string>
+		<string>OpenSans-Medium.ttf</string>
+		<string>NotoSans-BoldItalic.ttf</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>NotoSans-BlackItalic.ttf</string>
+		<string>Montserrat-Italic.ttf</string>
+		<string>OpenSans-ExtraBoldItalic.ttf</string>
+		<string>NotoSans-ExtraBoldItalic.ttf</string>
+		<string>NotoSans-ExtraLight.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+		<string>NotoSans-ThinItalic.ttf</string>
+		<string>NotoSans-ExtraLightItalic.ttf</string>
+		<string>OpenSans-BoldItalic.ttf</string>
+		<string>Montserrat-SemiBoldItalic.ttf</string>
+		<string>Montserrat-ExtraBoldItalic.ttf</string>
+		<string>NotoSans-ExtraBold.ttf</string>
+		<string>NotoSans-Italic.ttf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -43,6 +116,8 @@
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>

@@ -46,3 +46,31 @@
 - After disabling Hermes V1, new Reanimated native compatibility errors appeared instead
 - Build/debug cycle turned into a chain of one issue exposing the next
 - Xcode still shows a set of legacy architecture and native warning noise, even though the app now builds
+
+## 2026-03-14 & 2026-03-15
+
+### What we did
+
+- Added `react-native.config.js` for project asset configuration
+- Registered `react-native-vector-icons` for iOS using:
+  `npx rnvi-update-plist package.json ios/Famtivity/Info.plist`
+- Tested icon rendering successfully with `<AntDesign name="home" size={40} />`
+- Added custom fonts to `src/fonts`
+- Linked custom fonts with:
+  `npx react-native-asset`
+- Tested custom fonts in the app and confirmed they render correctly
+- Set up root saga and root reducer structure
+- Added the first reducer/saga flow for device info
+- Added `useHooks.tsx` and created `useDeviceInfo()` for simpler global selector access
+- Updated `App.tsx` to use `Provider`, `PersistGate`, `GestureHandlerRootView`, and `SafeAreaProvider`
+- Set up a temporary `store.js` with Redux, saga middleware, persistence, and `AsyncStorage`
+- Started the custom UI system under `src/ui`
+- Confirmed `UIView` is wired in as the first reusable UI component
+
+### Struggles
+
+- iOS icon font setup was confusing at first because manual Xcode linking caused duplicate resource build failures
+- Had to back out of the broken manual font setup and restart from a clean project state
+- There was confusion between library-managed icon fonts and app-owned custom fonts
+- Saga TypeScript conversion caused some friction around generator typing and what actually needed to be typed
+- A few setup steps were working correctly, but the flow was hard to verify until each part was tested directly in the app
