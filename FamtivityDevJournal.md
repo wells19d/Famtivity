@@ -1,6 +1,6 @@
 # Famtivity Development Journal
 
-## 2026-03-10 - 2026-03-12
+## 03-10-2026 - 03-12-2026
 
 ### What we did
 
@@ -22,7 +22,7 @@
 - Xcode initially tried building to a physical device instead of the simulator
 - Large amount of warning noise made it harder to spot real issues
 
-## 2026-03-13
+## 03-13-2026
 
 ### What we did
 
@@ -47,7 +47,7 @@
 - Build/debug cycle turned into a chain of one issue exposing the next
 - Xcode still shows a set of legacy architecture and native warning noise, even though the app now builds
 
-## 2026-03-14 & 2026-03-15
+## 3-14-2026 & 03-15-2026
 
 ### What we did
 
@@ -74,3 +74,17 @@
 - There was confusion between library-managed icon fonts and app-owned custom fonts
 - Saga TypeScript conversion caused some friction around generator typing and what actually needed to be typed
 - A few setup steps were working correctly, but the flow was hard to verify until each part was tested directly in the app
+
+## 03-23-2026
+
+### What we did
+
+- Added `UIUtilities` as a font, color, size, button style standardization kit
+- Added `IconList` as a icon list system for icon standardization
+- Updated `index` for ui, for a single import system
+- Updated and tested the `View`, `Text`, and `Icons` to make sure they are working with their prop conditions.
+
+### Struggles
+
+- Found that ios updated the font system integration for open sans, updated the font for correction.
+- Found that the FontAwesome Icon system needed another prop system that can not be pulled into a prop system and must be included individually for each icon.

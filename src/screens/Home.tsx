@@ -1,18 +1,17 @@
 //* Home.tsx
 
 import React from 'react';
-import { Text } from 'react-native';
-import { View } from '../ui';
-import AntDesign from '@react-native-vector-icons/ant-design';
+import { Text, View, Icons } from '../ui';
 
 const Home = () => {
   return (
-    <View flex border centerVH>
-      <Text style={{ fontFamily: 'CherryBlossom', fontSize: 24 }}>
-        Custom Font Test
+    <View flex centerVH>
+      <Text size="medium" color="blue">
+        Welcome to Famtivity!
       </Text>
+
       <View>
-        <AntDesign name="home" size={40} />
+        <Icons.Check size={30} color="green" />
       </View>
     </View>
   );

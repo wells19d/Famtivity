@@ -2836,22 +2836,22 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - react-native-vector-icons-ant-design (12.4.2)
-  - react-native-vector-icons-entypo (12.4.2)
-  - react-native-vector-icons-evil-icons (12.4.2)
-  - react-native-vector-icons-feather (12.4.2)
-  - react-native-vector-icons-fontawesome (12.4.2)
-  - react-native-vector-icons-fontawesome5 (12.3.2)
-  - react-native-vector-icons-fontawesome6 (12.3.2)
-  - react-native-vector-icons-fontisto (12.4.2)
-  - react-native-vector-icons-foundation (12.4.2)
-  - react-native-vector-icons-ionicons (12.4.2)
-  - react-native-vector-icons-lucide (12.4.2)
-  - react-native-vector-icons-material-design-icons (12.4.2)
-  - react-native-vector-icons-material-icons (12.4.2)
-  - react-native-vector-icons-octicons (20.4.2)
-  - react-native-vector-icons-simple-line-icons (12.4.2)
-  - react-native-vector-icons-zocial (12.4.2)
+  - react-native-vector-icons-ant-design (12.5.0)
+  - react-native-vector-icons-entypo (12.5.0)
+  - react-native-vector-icons-evil-icons (12.5.0)
+  - react-native-vector-icons-feather (12.5.0)
+  - react-native-vector-icons-fontawesome (12.5.0)
+  - react-native-vector-icons-fontawesome5 (12.4.0)
+  - react-native-vector-icons-fontawesome6 (12.4.0)
+  - react-native-vector-icons-fontisto (12.5.0)
+  - react-native-vector-icons-foundation (12.5.0)
+  - react-native-vector-icons-ionicons (12.5.0)
+  - react-native-vector-icons-lucide (12.5.0)
+  - react-native-vector-icons-material-design-icons (12.5.0)
+  - react-native-vector-icons-material-icons (12.5.0)
+  - react-native-vector-icons-octicons (20.5.0)
+  - react-native-vector-icons-simple-line-icons (12.5.0)
+  - react-native-vector-icons-zocial (12.5.0)
   - React-NativeModulesApple (0.84.1):
     - hermes-engine
     - React-callinvoker
@@ -3392,7 +3392,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - RNReactNativeHapticFeedback (2.3.3):
+  - RNReactNativeHapticFeedback (2.3.4):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -3458,7 +3458,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - RNSVG (15.15.3):
+  - RNSVG (15.15.4):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -3478,9 +3478,9 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
-    - RNSVG/common (= 15.15.3)
+    - RNSVG/common (= 15.15.4)
     - Yoga
-  - RNSVG/common (15.15.3):
+  - RNSVG/common (15.15.4):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -3911,22 +3911,22 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 89665c9ad30549e2317c893f1e8cfff64f965de6
   React-microtasksnativemodule: 3da114dcb32a85c76f305b053687644cce36cfed
   react-native-safe-area-context: 45435943d06e262f946fcc3f4c4de6bfd0c9cbe1
-  react-native-vector-icons-ant-design: 4d9b8b4ddc0b5520a7a49e246d4313b0372df4f7
-  react-native-vector-icons-entypo: df7884c4002b70c79d41b7de10b53df3ce8c1e8e
-  react-native-vector-icons-evil-icons: 7d928cafd523012d6576a1cbb933338ba074b51e
-  react-native-vector-icons-feather: e1fb94dbb68e5469194cc80311f27e6427c84aa3
-  react-native-vector-icons-fontawesome: 3604609191a2b4323637a4a25dcd4e6e05579dc2
-  react-native-vector-icons-fontawesome5: 8187e7738d0db1b8373cf030f7140299a7216103
-  react-native-vector-icons-fontawesome6: 3765e18f5116ae4498997bf8548eaab05de72ee6
-  react-native-vector-icons-fontisto: a925230db7990ba7739b1c480de51dcf58b42a89
-  react-native-vector-icons-foundation: 6ac0be48fda5e2a1c38f3fe1fa53e7ad6e4fe6e7
-  react-native-vector-icons-ionicons: 7cc4388958a60560aa6f5e257ad8197d555700ff
-  react-native-vector-icons-lucide: 00fefa767abccdcc044f41e34a4a1fc41f6a2da5
-  react-native-vector-icons-material-design-icons: 12bc222b4cd6781a3cbbf4b537767d3d528011dd
-  react-native-vector-icons-material-icons: 433cb95ee9de1246934b2ae8414f9c02b520b628
-  react-native-vector-icons-octicons: 7b43427ddb1408cf68951d58c74cfb5bc7aa5ed1
-  react-native-vector-icons-simple-line-icons: 5759a3271f33432206043ed7cc991656fc8405b2
-  react-native-vector-icons-zocial: 7ab8f88a507678ae717fa663ab7f94b41a1447c7
+  react-native-vector-icons-ant-design: 1d338bf7122a06c927f2e8c74a18d2a57f8d488d
+  react-native-vector-icons-entypo: 3cd60c5950ea9b2cf7f1fe4fe50fbcbcef2ba381
+  react-native-vector-icons-evil-icons: 468d002d338e0d5020f580473b8e2f4c3b5e4476
+  react-native-vector-icons-feather: 24d5a788448daee58371663c440300e185b7ee7e
+  react-native-vector-icons-fontawesome: 0660cddaa8de278bc2404b45d098ef2b93b3608b
+  react-native-vector-icons-fontawesome5: 787102f6050e011721d7368d990532debd19bc08
+  react-native-vector-icons-fontawesome6: 4818cfee1b9283e57f5476778b21bdb490a08941
+  react-native-vector-icons-fontisto: 6ed74942a16a4bbed20f2c42f6b456930c3e9570
+  react-native-vector-icons-foundation: b5dee82f3507ac105dd013d626273997aaa6ca9c
+  react-native-vector-icons-ionicons: 7e633927db6ab96e0255b5920c053777cacca505
+  react-native-vector-icons-lucide: 6d4ac519f521e0d4159a78fe4404f3dcdfa3d780
+  react-native-vector-icons-material-design-icons: 95914f2f6b18e26e5c9563afe33184e110afe674
+  react-native-vector-icons-material-icons: 8717ed6d0adafdea7a20475dababba112992a372
+  react-native-vector-icons-octicons: 0a66405ab747bcbd38b4fe616aa6b9bc4ceb8eec
+  react-native-vector-icons-simple-line-icons: 9827c32f02a5fbd6c6edb2da68da5bc1cb84645d
+  react-native-vector-icons-zocial: 00d6364c763bc82e5e64d0c1a12df844b01e58fc
   React-NativeModulesApple: 1eade1fa3a182fbfe8a0ffe80833daf35e5161de
   React-networking: cc690cd054fc4c3a4a4804a188238c5b443d11ea
   React-oscompat: d25dec7213a964cdfae442e1967a680954ed0df1
@@ -3971,9 +3971,9 @@ SPEC CHECKSUMS:
   RNFBRemoteConfig: 4acb63352196e3ddd479b25626c016eb9115d653
   RNFBStorage: b4816e7abe096fa7fc823577dd99b987c7653f99
   RNGestureHandler: bf692d5a1f7b6ce7fe01fd4e6311ae1d543ddd3e
-  RNReactNativeHapticFeedback: 71068ee2dd8b54feae784437353342c57c1cffa9
+  RNReactNativeHapticFeedback: 8e9372ecc9d5a26f3a8d6bfdec49bd6bb81b9a5a
   RNScreens: d0b84395f70841b48de7af26e45704ed4a24c62e
-  RNSVG: 8e3f7761226162bf86d7420a0ba9445f3f0377f3
+  RNSVG: 194bee0b443d3ea8ca41c86c657edcaf64f00f35
   Yoga: 9e495ad6f457c4ff504a8328981496b5cf41dd7f
 
 PODFILE CHECKSUM: 0242262e534983086496b9a349023f7dd7ba60ae

@@ -1,6 +1,7 @@
 //* index.js (ui kit)
 export { default as View } from './UIView';
-// export { default as Text } from './UIText';
+export { default as Text } from './UIText';
+export { IconList as Icons } from './IconList';
 // export { default as BottomSheet } from './UIBottomSheet';
 // export { default as Toast } from './UIToast';
 // export { default as Layout } from './UILayout';
