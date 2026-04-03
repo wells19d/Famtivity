@@ -88,3 +88,11 @@
 
 - Found that ios updated the font system integration for open sans, updated the font for correction.
 - Found that the FontAwesome Icon system needed another prop system that can not be pulled into a prop system and must be included individually for each icon.
+
+## 04-03-2026
+
+### What we did
+
+- Upgraded packages for vector icons, haptic feedback, and firebase.
+- Created Test data in a hidden package system
+- Created a simulated redux hook for user connected data

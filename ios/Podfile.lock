@@ -1188,7 +1188,7 @@ PODS:
     - abseil/meta/type_traits
     - abseil/xcprivacy
   - abseil/xcprivacy (1.20240722.0)
-  - AsyncStorage (3.0.1):
+  - AsyncStorage (3.0.2):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -1443,7 +1443,7 @@ PODS:
     - gRPC-Core/Privacy (= 1.69.0)
   - gRPC-Core/Interface (1.69.0)
   - gRPC-Core/Privacy (1.69.0)
-  - GTMSessionFetcher/Core (5.1.0)
+  - GTMSessionFetcher/Core (5.2.0)
   - hermes-engine (0.15.1):
     - hermes-engine/Pre-built (= 0.15.1)
   - hermes-engine/Pre-built (0.15.1)
@@ -2836,22 +2836,22 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - react-native-vector-icons-ant-design (12.5.0)
-  - react-native-vector-icons-entypo (12.5.0)
-  - react-native-vector-icons-evil-icons (12.5.0)
-  - react-native-vector-icons-feather (12.5.0)
-  - react-native-vector-icons-fontawesome (12.5.0)
-  - react-native-vector-icons-fontawesome5 (12.4.0)
-  - react-native-vector-icons-fontawesome6 (12.4.0)
-  - react-native-vector-icons-fontisto (12.5.0)
-  - react-native-vector-icons-foundation (12.5.0)
-  - react-native-vector-icons-ionicons (12.5.0)
-  - react-native-vector-icons-lucide (12.5.0)
-  - react-native-vector-icons-material-design-icons (12.5.0)
-  - react-native-vector-icons-material-icons (12.5.0)
-  - react-native-vector-icons-octicons (20.5.0)
-  - react-native-vector-icons-simple-line-icons (12.5.0)
-  - react-native-vector-icons-zocial (12.5.0)
+  - react-native-vector-icons-ant-design (13.0.0)
+  - react-native-vector-icons-entypo (13.0.0)
+  - react-native-vector-icons-evil-icons (13.0.0)
+  - react-native-vector-icons-feather (13.0.0)
+  - react-native-vector-icons-fontawesome (13.0.0)
+  - react-native-vector-icons-fontawesome5 (13.0.0)
+  - react-native-vector-icons-fontawesome6 (13.0.0)
+  - react-native-vector-icons-fontisto (13.0.0)
+  - react-native-vector-icons-foundation (13.0.0)
+  - react-native-vector-icons-ionicons (13.0.0)
+  - react-native-vector-icons-lucide (13.0.0)
+  - react-native-vector-icons-material-design-icons (13.0.0)
+  - react-native-vector-icons-material-icons (13.0.0)
+  - react-native-vector-icons-octicons (21.0.0)
+  - react-native-vector-icons-simple-line-icons (13.0.0)
+  - react-native-vector-icons-zocial (13.0.0)
   - React-NativeModulesApple (0.84.1):
     - hermes-engine
     - React-callinvoker
@@ -3232,7 +3232,7 @@ PODS:
     - Yoga
   - RNDeviceInfo (15.0.2):
     - React-Core
-  - RNFBAnalytics (23.8.8):
+  - RNFBAnalytics (24.0.0):
     - FirebaseAnalytics/Core (= 12.10.0)
     - FirebaseAnalytics/IdentitySupport (= 12.10.0)
     - hermes-engine
@@ -3256,7 +3256,7 @@ PODS:
     - ReactNativeDependencies
     - RNFBApp
     - Yoga
-  - RNFBApp (23.8.8):
+  - RNFBApp (24.0.0):
     - Firebase/CoreOnly (= 12.10.0)
     - hermes-engine
     - RCTRequired
@@ -3278,7 +3278,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - RNFBAuth (23.8.8):
+  - RNFBAuth (24.0.0):
     - Firebase/Auth (= 12.10.0)
     - hermes-engine
     - RCTRequired
@@ -3301,7 +3301,7 @@ PODS:
     - ReactNativeDependencies
     - RNFBApp
     - Yoga
-  - RNFBFirestore (23.8.8):
+  - RNFBFirestore (24.0.0):
     - Firebase/Firestore (= 12.10.0)
     - hermes-engine
     - RCTRequired
@@ -3324,7 +3324,7 @@ PODS:
     - ReactNativeDependencies
     - RNFBApp
     - Yoga
-  - RNFBRemoteConfig (23.8.8):
+  - RNFBRemoteConfig (24.0.0):
     - Firebase/RemoteConfig (= 12.10.0)
     - hermes-engine
     - RCTRequired
@@ -3347,7 +3347,7 @@ PODS:
     - ReactNativeDependencies
     - RNFBApp
     - Yoga
-  - RNFBStorage (23.8.8):
+  - RNFBStorage (24.0.0):
     - Firebase/Storage (= 12.10.0)
     - hermes-engine
     - RCTRequired
@@ -3370,7 +3370,7 @@ PODS:
     - ReactNativeDependencies
     - RNFBApp
     - Yoga
-  - RNGestureHandler (2.30.0):
+  - RNGestureHandler (2.31.0):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -3392,7 +3392,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - RNReactNativeHapticFeedback (2.3.4):
+  - RNReactNativeHapticFeedback (3.0.0):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -3847,7 +3847,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   abseil: a05cc83bf02079535e17169a73c5be5ba47f714b
-  AsyncStorage: 2561c9a2a5d066ae349236d8d5e4c7d9df75e3a9
+  AsyncStorage: 4804efd8f9b60da59dca7decfe26af205fb10438
   BoringSSL-GRPC: dded2a44897e45f28f08ae87a55ee4bcd19bc508
   FBLazyVector: baf9d0492aa305444465c798e972f87e6a60dc69
   Firebase: 99f203d3a114c6ba591f3b32263a9626e450af65
@@ -3870,7 +3870,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   "gRPC-C++": cc207623316fb041a7a3e774c252cf68a058b9e8
   gRPC-Core: 860978b7db482de8b4f5e10677216309b5ff6330
-  GTMSessionFetcher: b8ab00db932816e14b0a0664a08cb73dda6d164b
+  GTMSessionFetcher: 904bdd2a82c635bcd6f44edf94cc8775c5d1d6e6
   hermes-engine: de560ec8aeab51c651eb91f531fde03f48f43e24
   leveldb-library: cc8b8f8e013647a295ad3f8cd2ddf49a6f19be19
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
@@ -3911,22 +3911,22 @@ SPEC CHECKSUMS:
   React-Mapbuffer: 89665c9ad30549e2317c893f1e8cfff64f965de6
   React-microtasksnativemodule: 3da114dcb32a85c76f305b053687644cce36cfed
   react-native-safe-area-context: 45435943d06e262f946fcc3f4c4de6bfd0c9cbe1
-  react-native-vector-icons-ant-design: 1d338bf7122a06c927f2e8c74a18d2a57f8d488d
-  react-native-vector-icons-entypo: 3cd60c5950ea9b2cf7f1fe4fe50fbcbcef2ba381
-  react-native-vector-icons-evil-icons: 468d002d338e0d5020f580473b8e2f4c3b5e4476
-  react-native-vector-icons-feather: 24d5a788448daee58371663c440300e185b7ee7e
-  react-native-vector-icons-fontawesome: 0660cddaa8de278bc2404b45d098ef2b93b3608b
-  react-native-vector-icons-fontawesome5: 787102f6050e011721d7368d990532debd19bc08
-  react-native-vector-icons-fontawesome6: 4818cfee1b9283e57f5476778b21bdb490a08941
-  react-native-vector-icons-fontisto: 6ed74942a16a4bbed20f2c42f6b456930c3e9570
-  react-native-vector-icons-foundation: b5dee82f3507ac105dd013d626273997aaa6ca9c
-  react-native-vector-icons-ionicons: 7e633927db6ab96e0255b5920c053777cacca505
-  react-native-vector-icons-lucide: 6d4ac519f521e0d4159a78fe4404f3dcdfa3d780
-  react-native-vector-icons-material-design-icons: 95914f2f6b18e26e5c9563afe33184e110afe674
-  react-native-vector-icons-material-icons: 8717ed6d0adafdea7a20475dababba112992a372
-  react-native-vector-icons-octicons: 0a66405ab747bcbd38b4fe616aa6b9bc4ceb8eec
-  react-native-vector-icons-simple-line-icons: 9827c32f02a5fbd6c6edb2da68da5bc1cb84645d
-  react-native-vector-icons-zocial: 00d6364c763bc82e5e64d0c1a12df844b01e58fc
+  react-native-vector-icons-ant-design: 61814534c87986cdf683ff5801605e00a46b593b
+  react-native-vector-icons-entypo: 9da6305812362779f61a5d337d78beab5d31a470
+  react-native-vector-icons-evil-icons: 6d951d7c1da72a026562ffa0a79e98f596018587
+  react-native-vector-icons-feather: 834cf7691d3d64d20a2f25f2422fd6ff33357f5b
+  react-native-vector-icons-fontawesome: 53835cb7f1bebc941d5b55a632bc7fbc8105cac8
+  react-native-vector-icons-fontawesome5: 567628d631178227751bf60be120b1a2cccd3927
+  react-native-vector-icons-fontawesome6: a8c495398688c2968b088689a72add570b4f6fa1
+  react-native-vector-icons-fontisto: b7ca8f8f5bc8442723ac901a4b7fd580db444054
+  react-native-vector-icons-foundation: 866b69f0d70903176124b019d3ce32109e4adc3d
+  react-native-vector-icons-ionicons: 334801ca0211bf1f5673e3c791330639d47dc0e7
+  react-native-vector-icons-lucide: df2f0f11fc1db6d5cf0a08cfbb266ccc69503735
+  react-native-vector-icons-material-design-icons: 1955bd08457a8310e6a2d3c87c7f1ebaca159098
+  react-native-vector-icons-material-icons: e81230f19be5c8ada2ef4d9c2958c0fe74848177
+  react-native-vector-icons-octicons: 6aa0923b15ed5cb0511ebfafe644285956bfed8d
+  react-native-vector-icons-simple-line-icons: 685c9f518feb373c229f8aa765c74175aa292f03
+  react-native-vector-icons-zocial: 06b44e99f304364654d2902334f840dcdabfd118
   React-NativeModulesApple: 1eade1fa3a182fbfe8a0ffe80833daf35e5161de
   React-networking: cc690cd054fc4c3a4a4804a188238c5b443d11ea
   React-oscompat: d25dec7213a964cdfae442e1967a680954ed0df1
@@ -3964,14 +3964,14 @@ SPEC CHECKSUMS:
   RecaptchaInterop: 11e0b637842dfb48308d242afc3f448062325aba
   RNCClipboard: d73fd4b2ac59e792596e7cd615b6321d577c1a2b
   RNDeviceInfo: 4c852998208b60dc192ae3529e5867817719ad1e
-  RNFBAnalytics: 69fcd27c2b7aea24b96157ddb3d42487e3dee679
-  RNFBApp: ff3a9aeb92a6c5d7423842de03bd06b701b41fb8
-  RNFBAuth: 09321886d2c8656dfa7ebd7cf9277d09c8f8d117
-  RNFBFirestore: 0b59456cb9d4f041d8365d7c71b00af6a47e5c59
-  RNFBRemoteConfig: 4acb63352196e3ddd479b25626c016eb9115d653
-  RNFBStorage: b4816e7abe096fa7fc823577dd99b987c7653f99
-  RNGestureHandler: bf692d5a1f7b6ce7fe01fd4e6311ae1d543ddd3e
-  RNReactNativeHapticFeedback: 8e9372ecc9d5a26f3a8d6bfdec49bd6bb81b9a5a
+  RNFBAnalytics: f37939996ee4102b8eb6fa547c0757e1c160620c
+  RNFBApp: d5dad997ae205ea4344efd3e746916fa3e1710af
+  RNFBAuth: 4db9ae1e113f88a0c4e1189017c66f6fbab6c9c8
+  RNFBFirestore: ed4d089d4d09f2f22d448dd7e0cd9c833242c50d
+  RNFBRemoteConfig: 4587ce393f235fcc95b2a153d798e2fa79971a5b
+  RNFBStorage: 87a25017beb754fceaa94daab86ec4d8f3ba6c5e
+  RNGestureHandler: 395f993467a95d0006bb28fc46418b98b80d6e01
+  RNReactNativeHapticFeedback: ab7ef0c4befc540f5431166f98d74edfc70001f7
   RNScreens: d0b84395f70841b48de7af26e45704ed4a24c62e
   RNSVG: 194bee0b443d3ea8ca41c86c657edcaf64f00f35
   Yoga: 9e495ad6f457c4ff504a8328981496b5cf41dd7f

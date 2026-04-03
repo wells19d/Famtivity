@@ -1,21 +1,21 @@
 //* IconList.tsx
 import React from 'react';
-import ADIcons from '@react-native-vector-icons/ant-design';
-import EIcons from '@react-native-vector-icons/entypo';
-import EVIcons from '@react-native-vector-icons/evil-icons';
-import FEIcons from '@react-native-vector-icons/feather';
-import FAIcons from '@react-native-vector-icons/fontawesome';
-import FA5Icons from '@react-native-vector-icons/fontawesome5';
-import FA6Icons from '@react-native-vector-icons/fontawesome6';
-import FIcons from '@react-native-vector-icons/fontisto';
-import FOIcons from '@react-native-vector-icons/foundation';
-import IIcons from '@react-native-vector-icons/ionicons';
-import LuIcons from '@react-native-vector-icons/lucide';
-import MDIcons from '@react-native-vector-icons/material-design-icons';
-import MIIcons from '@react-native-vector-icons/material-icons';
-import OctIcons from '@react-native-vector-icons/octicons';
-import SIIcons from '@react-native-vector-icons/simple-line-icons';
-import ZIIcons from '@react-native-vector-icons/zocial';
+import { AntDesign as ADIcons } from '@react-native-vector-icons/ant-design';
+import { Entypo as EIcons } from '@react-native-vector-icons/entypo';
+import { EvilIcons as EVIcons } from '@react-native-vector-icons/evil-icons';
+import { Feather as FEIcons } from '@react-native-vector-icons/feather';
+import { FontAwesome as FAIcons } from '@react-native-vector-icons/fontawesome';
+import { FontAwesome5 as FA5Icons } from '@react-native-vector-icons/fontawesome5';
+import { FontAwesome6 as FA6Icons } from '@react-native-vector-icons/fontawesome6';
+import { Fontisto as FIcons } from '@react-native-vector-icons/fontisto';
+import { Foundation as FOIcons } from '@react-native-vector-icons/foundation';
+import { Ionicons as IIcons } from '@react-native-vector-icons/ionicons';
+import { Lucide as LuIcons } from '@react-native-vector-icons/lucide';
+import { MaterialDesignIcons as MDIcons } from '@react-native-vector-icons/material-design-icons';
+import { MaterialIcons as MIIcons } from '@react-native-vector-icons/material-icons';
+import { Octicons as OctIcons } from '@react-native-vector-icons/octicons';
+import { SimpleLineIcons as SIIcons } from '@react-native-vector-icons/simple-line-icons';
+import { Zocial as ZIIcons } from '@react-native-vector-icons/zocial';
 
 type IconProps = {
   size?: number;
