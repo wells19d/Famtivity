@@ -1,6 +1,11 @@
 //* useTestData.tsx
 import { useMemo } from 'react';
-import { testUsers, testProfiles, testFamilies, testTasks } from 'testUserData'; // this is incorrect on purpose to avoid displaying a hidden systems.
+import {
+  testUsers,
+  testProfiles,
+  testFamilies,
+  testTasks,
+} from './testUserData';
 
 export const useTestData = (userId: string, password: string) => {
   return useMemo(() => {
@@ -22,7 +27,7 @@ export const useTestData = (userId: string, password: string) => {
         familyTasks: [],
         myTasks: [],
         adultTasks: [],
-        childTasks: [],
+        openTasks: [],
       };
     }
 
@@ -36,7 +41,7 @@ export const useTestData = (userId: string, password: string) => {
         familyTasks: [],
         myTasks: [],
         adultTasks: [],
-        childTasks: [],
+        openTasks: [],
       };
     }
 
@@ -50,7 +55,7 @@ export const useTestData = (userId: string, password: string) => {
         familyTasks: [],
         myTasks: [],
         adultTasks: [],
-        childTasks: [],
+        openTasks: [],
       };
     }
 
@@ -63,7 +68,7 @@ export const useTestData = (userId: string, password: string) => {
         familyTasks: [],
         myTasks: [],
         adultTasks: [],
-        childTasks: [],
+        openTasks: [],
       };
     }
 
@@ -78,7 +83,7 @@ export const useTestData = (userId: string, password: string) => {
         familyTasks: [],
         myTasks: [],
         adultTasks: [],
-        childTasks: [],
+        openTasks: [],
       };
     }
 
@@ -91,7 +96,7 @@ export const useTestData = (userId: string, password: string) => {
         familyTasks: [],
         myTasks: [],
         adultTasks: [],
-        childTasks: [],
+        openTasks: [],
       };
     }
 
@@ -101,21 +106,101 @@ export const useTestData = (userId: string, password: string) => {
     // console.log('Current Profile', profile);
     // console.log('Current Family', family);
 
-    let familyTasks = (tasks || []).filter(
+    let allFamilyTasks = (tasks || []).filter(
       task => task?.familyId === family.id,
     );
+
+    // console.log('All Family Tasks', allFamilyTasks);
+
+    let familyTasks = allFamilyTasks.filter(task => {
+      const isPrivate = !!task?.private;
+      const isAdultTask = task?.adultOnly === true;
+      const isAssignedToUser = (task?.assignedTo || []).includes(user.id);
+      const isViewerAdult =
+        profile.familyRole === 'admin' || profile.familyRole === 'adult';
+      const isViewerChild = profile.familyRole === 'child';
+
+      if (!isPrivate) {
+        return true;
+      }
+
+      if (isAdultTask) {
+        return isViewerAdult && isAssignedToUser;
+      }
+
+      if (!isAdultTask) {
+        return isViewerAdult || (isViewerChild && isAssignedToUser);
+      }
+
+      return false;
+    });
+
     // console.log('Family Tasks', familyTasks);
 
-    let myTasks = familyTasks.filter(task =>
-      (task?.assignedTo || []).includes(user.id),
-    );
+    let myTasks = allFamilyTasks.filter(task => {
+      const isAssignedToUser = (task?.assignedTo || []).includes(user.id);
+      const isPrivate = !!task?.private;
+      const isAdultTask = task?.adultOnly === true;
+      const isViewerAdult =
+        profile.familyRole === 'admin' || profile.familyRole === 'adult';
+
+      if (!isAssignedToUser) {
+        return false;
+      }
+
+      if (!isPrivate) {
+        return true;
+      }
+
+      if (isAdultTask) {
+        return isViewerAdult;
+      }
+
+      return true;
+    });
+
     // console.log('My Tasks', myTasks);
 
-    let adultTasks = familyTasks.filter(task => !!task?.forAdult);
-    console.log('Adult Tasks', adultTasks);
+    let adultTasks = allFamilyTasks.filter(task => {
+      const isAdultTask = task?.adultOnly === true;
+      const isPrivate = !!task?.private;
+      const isAssignedToUser = (task?.assignedTo || []).includes(user.id);
+      const isViewerAdult =
+        profile.familyRole === 'admin' || profile.familyRole === 'adult';
 
-    let childTasks = familyTasks.filter(task => !task?.forAdult);
-    console.log('Child Tasks', childTasks);
+      if (!isAdultTask) {
+        return false;
+      }
+
+      if (isPrivate) {
+        return isViewerAdult && isAssignedToUser;
+      }
+
+      return true;
+    });
+
+    // console.log('Adult Tasks', adultTasks);
+
+    let openTasks = allFamilyTasks.filter(task => {
+      const isAdultTask = task?.adultOnly === true;
+      const isPrivate = !!task?.private;
+      const isAssignedToUser = (task?.assignedTo || []).includes(user.id);
+      const isViewerAdult =
+        profile.familyRole === 'admin' || profile.familyRole === 'adult';
+      const isViewerChild = profile.familyRole === 'child';
+
+      if (isAdultTask) {
+        return false;
+      }
+
+      if (isPrivate) {
+        return isViewerAdult || (isViewerChild && isAssignedToUser);
+      }
+
+      return true;
+    });
+
+    // console.log('Open Tasks', openTasks);
 
     return {
       user,
@@ -124,7 +209,7 @@ export const useTestData = (userId: string, password: string) => {
       familyTasks,
       myTasks,
       adultTasks,
-      childTasks,
+      openTasks,
     };
-  }, [userId]);
+  }, [userId, password]);
 };

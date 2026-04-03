@@ -5,15 +5,8 @@ import { Text, View, Icons } from '../ui';
 import { useTestData } from '../hooks/useTestData';
 
 const Home = () => {
-  const {
-    user,
-    profile,
-    family,
-    familyTasks,
-    myTasks,
-    adultTasks,
-    childTasks,
-  } = useTestData('', ''); // pass in test userId and password
+  const { user, profile, family, familyTasks, myTasks, adultTasks, openTasks } =
+    useTestData('', '');
 
   console.log('Home screen data:', {
     user,
@@ -22,7 +15,7 @@ const Home = () => {
     familyTasks,
     myTasks,
     adultTasks,
-    childTasks,
+    openTasks,
   });
 
   return (
