@@ -96,3 +96,8 @@
 - Upgraded packages for vector icons, haptic feedback, and firebase.
 - Created Test data in a hidden package system
 - Created a simulated redux hook for user connected data
+- Updated pre-designed / determined database
+
+### Struggles
+
+- None. Possible package conflictions but due to development, it wasn't a concern with current progress.
