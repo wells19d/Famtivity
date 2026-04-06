@@ -100,4 +100,26 @@
 
 ### Struggles
 
-- None. Possible package conflictions but due to development, it wasn't a concern with current progress.
+- None. Possible package conflicts due to development, it wasn't a concern with current progress.
+
+## 04-06-2026
+
+### What we did
+
+- Updated App to be a true init building component
+- Created Main for our navigational stack
+- Created `Landing` as our navigation screen
+- Move Home into its own folder along with `Landing`
+- Removed Test Data hook from production
+
+### Struggles
+
+- None, but react-test-renderer was on incorrect compatible versions. Downgraded to 19.2.3 from 19.2.4
+
+#### Notes:
+
+- Landing is going to be our navigation system. We are going to render this like an iOS screen that renders apps.
+- Primary screens will close/open with animation, like we are opening an app.
+- Secondary screens will render like standard navigation / flip pages.
+- "Apps" will render based on users, roles, account types and settings.
+- We will need react animation again, but for starting development, we will leave the animation out for now.
