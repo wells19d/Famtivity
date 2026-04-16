@@ -342,6 +342,11 @@ const fontLookup: Record<string, FontData> = {
     weight: '500',
     lineHeightFactor: 0.8,
   },
+  ios: {
+    ios: 'SF Pro Text',
+    android: 'SF Pro Text',
+    weight: '400',
+  },
 };
 
 const DEFAULT_FONT: FontKey = 'open-5';

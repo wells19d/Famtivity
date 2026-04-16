@@ -77,6 +77,15 @@ export const IconList = {
   ChevronUp: (props: IconProps) => (
     <FEIcons name="chevron-up" size={20} color="#000" {...props} />
   ),
+  Children: (props: IconProps) => (
+    <FA6Icons
+      name="children"
+      iconStyle="solid"
+      size={20}
+      color="#000"
+      {...props}
+    />
+  ),
   CirclePlus: (props: IconProps) => (
     <ADIcons name="plus-circle" size={20} color="#000" {...props} />
   ),
@@ -104,6 +113,9 @@ export const IconList = {
   EyeOn: (props: IconProps) => (
     <MDIcons name="eye" size={20} color="#000" {...props} />
   ),
+  Family: (props: IconProps) => (
+    <MIIcons name="family-restroom" size={20} color="#000" {...props} />
+  ),
   Favorite: (props: IconProps) => (
     <OctIcons name="star-fill" size={20} color="#000" {...props} />
   ),
@@ -122,11 +134,49 @@ export const IconList = {
   Home: (props: IconProps) => (
     <MDIcons name="home" size={20} color="#000" {...props} />
   ),
+  History: (props: IconProps) => (
+    <MDIcons name="history" size={20} color="#000" {...props} />
+  ),
   InCart: (props: IconProps) => (
     <FAIcons name="cart-arrow-down" size={20} color="#000" {...props} />
   ),
+  Invoice: (props: IconProps) => (
+    <MDIcons name="invoice-text-outline" size={20} color="#000" {...props} />
+  ),
   Keyboard: (props: IconProps) => (
     <MDIcons name="keyboard-variant" size={20} color="#000" {...props} />
+  ),
+  Medication: (props: IconProps) => (
+    <FA6Icons
+      name="prescription-bottle-medical"
+      iconStyle="solid"
+      size={20}
+      color="#000"
+      {...props}
+    />
+  ),
+  Pending: (props: IconProps) => (
+    <MIIcons name="pending-actions" size={20} color="#000" {...props} />
+  ),
+  Settings: (props: IconProps) => (
+    <IIcons name="settings-sharp" size={20} color="#000" {...props} />
+  ),
+  Tasks: (props: IconProps) => (
+    <FA5Icons
+      name="tasks"
+      iconStyle="solid"
+      size={20}
+      color="#000"
+      {...props}
+    />
+  ),
+  Unclaimed: (props: IconProps) => (
+    <MDIcons
+      name="map-marker-question-outline"
+      size={20}
+      color="#000"
+      {...props}
+    />
   ),
   XCircle: (props: IconProps) => (
     <OctIcons name="x-circle-fill" size={20} color="#000" {...props} />

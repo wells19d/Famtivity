@@ -123,3 +123,14 @@
 - Secondary screens will render like standard navigation / flip pages.
 - "Apps" will render based on users, roles, account types and settings.
 - We will need react animation again, but for starting development, we will leave the animation out for now.
+
+## 04-16-2026
+
+### What we did
+
+- Updated Main. Pulled createNativeStackNavigator and Navigation outside of the component. See struggles for why.
+- Updated LandingPage for naming scheme change.
+
+### Struggles
+
+- Navigation between screens was causing slow / bogged down due to having to re-render the Stack and the Navigation on every load. Thought this was due to a layer issue, but determined it was these 2 things causing our problems. Now Navigation quickly between screens doesn't slow / bog down the loading of each screen.
