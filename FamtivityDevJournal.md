@@ -134,3 +134,15 @@
 ### Struggles
 
 - Navigation between screens was causing slow / bogged down due to having to re-render the Stack and the Navigation on every load. Thought this was due to a layer issue, but determined it was these 2 things causing our problems. Now Navigation quickly between screens doesn't slow / bog down the loading of each screen.
+
+## 04-17-2026
+
+### What we did
+
+- Took test data (not in the project) and pushed it into firebase cloud firestore for (auth, profile, family), so we could log in users and test the family and profile connections we will create with redux sagas and reducers.
+- Updated LandingPage, just turned all the buttons on for screenshots.
+- Updated rulesets so no unauthorized and / or logged out users can access the database in firebase.
+
+### Struggles
+
+- None

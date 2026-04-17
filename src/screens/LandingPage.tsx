@@ -123,14 +123,14 @@ const LandingPage = () => {
       icon: <Icons.Medication size={iconSize - 5} color={iconColor} />,
       color: { buttonColor: buttonColor, borderColor: borderColor },
       onPress: handlePress('Medications'),
-      active: false,
+      active: true,
     },
     {
       name: 'Bills',
       icon: <Icons.Invoice size={iconSize} color={iconColor} />,
       color: { buttonColor: buttonColor, borderColor: borderColor },
       onPress: handlePress('Billing'),
-      active: false,
+      active: true,
     },
     {
       name: 'History',
