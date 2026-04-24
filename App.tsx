@@ -14,14 +14,32 @@ import {
 import { Text, View } from './src/ui';
 // import SplashScreen from './src/components/SplashScreen';
 // import Toast from 'react-native-toast-message';
-// import toastConfig from './src/KQ-UI/KQToast';
 import Main from './Main';
-// import { getAuth, onAuthStateChanged } from '@react-native-firebase/auth';
-// import { initializeApp, getApps } from '@react-native-firebase/app';
+import { getAuth, onAuthStateChanged } from '@react-native-firebase/auth';
+import { initializeApp, getApps } from '@react-native-firebase/app';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-function App() {
+const App = () => {
   const [appReady, setAppReady] = useState(false);
+
+  useEffect(() => {
+    // if (!getApps().length) {
+    //   initializeApp();
+    // }
+
+    const unsubscribe = onAuthStateChanged(getAuth(), () => {
+      setAppReady(true);
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const [isSplashVisible, setSplashVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setSplashVisible(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     (Text as any).defaultProps = (Text as any).defaultProps || {};
@@ -53,14 +71,14 @@ function App() {
           <SafeAreaProvider>
             <View flex style={styles.outerContainer}>
               <StatusBar barStyle="dark-content" backgroundColor={'blue'} />
-              <Main />
+              <Main appReady={appReady} isSplashVisible={isSplashVisible} />
             </View>
           </SafeAreaProvider>
         </GestureHandlerRootView>
       </PersistGate>
     </Provider>
   );
-}
+};
 
 const styles = StyleSheet.create({
   ghrv: { flex: 1 },

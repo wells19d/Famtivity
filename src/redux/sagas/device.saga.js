@@ -1,4 +1,4 @@
-//* device.saga.tsx
+//* device.saga.js
 import { put, takeLatest, call, take } from 'redux-saga/effects';
 import {
   getBrand,
@@ -10,7 +10,7 @@ import {
   hasNotch,
 } from 'react-native-device-info';
 import { Dimensions } from 'react-native';
-import { eventChannel, SagaIterator } from 'redux-saga';
+import { eventChannel } from 'redux-saga';
 
 function createDimensionChannel() {
   return eventChannel(emitter => {
@@ -23,7 +23,7 @@ function createDimensionChannel() {
   });
 }
 
-function* watchDeviceDimensions(): SagaIterator {
+function* watchDeviceDimensions() {
   const channel = createDimensionChannel();
   try {
     while (true) {
@@ -35,12 +35,10 @@ function* watchDeviceDimensions(): SagaIterator {
   }
 }
 
-function* fetchDeviceInfo(): SagaIterator {
+function* fetchDeviceInfo() {
   try {
     const { width, height } = Dimensions.get('window');
-    const ratio = Number(
-      (Math.sqrt(width ** 2 + height ** 2) / 100).toFixed(1),
-    );
+    const ratio = (Math.sqrt(width ** 2 + height ** 2) / 100).toFixed(1);
 
     const brand = yield call(getBrand);
     const formattedBrand = brand.charAt(0).toUpperCase() + brand.slice(1);
@@ -79,15 +77,12 @@ function* fetchDeviceInfo(): SagaIterator {
     };
 
     yield put({ type: 'SET_DEVICE_INFO', payload: deviceInfo });
-  } catch (error: unknown) {
-    const message =
-      error instanceof Error ? error.message : 'Unknown device info error';
-
-    yield put({ type: 'DEVICE_INFO_FETCH_FAILED', payload: message });
+  } catch (error) {
+    yield put({ type: 'DEVICE_INFO_FETCH_FAILED', payload: error.message });
   }
 }
 
-export default function* deviceSaga(): SagaIterator {
+export default function* deviceSaga() {
   yield takeLatest('FETCH_DEVICE_INFO', fetchDeviceInfo);
   yield call(watchDeviceDimensions); // watches for dimension changes
 }
