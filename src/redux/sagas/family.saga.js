@@ -18,7 +18,7 @@ function* fetchFamily(action) {
     const familyRef = doc(db, 'families', family);
     const familyDoc = yield call(getDoc, familyRef);
 
-    if (familyDoc.exists) {
+    if (familyDoc.exists()) {
       const familyData = familyDoc.data();
 
       const isAllowed = familyData?.allowedUsers?.includes(id);

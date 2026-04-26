@@ -2,8 +2,11 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getAuth, onAuthStateChanged } from '@react-native-firebase/auth';
+import { buildUser } from '../../redux/buildUser';
+import { getApp } from '@react-native-firebase/app';
 
-const auth = getAuth();
+const app = getApp();
+const auth = getAuth(app);
 
 const useRealTimeUsers = enabled => {
   const dispatch = useDispatch();
@@ -13,7 +16,7 @@ const useRealTimeUsers = enabled => {
 
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
       if (currentUser) {
-        dispatch({ type: 'SET_USER', payload: currentUser });
+        dispatch({ type: 'SET_USER', payload: buildUser(currentUser) });
       } else {
         dispatch({ type: 'UNSET_USER' });
       }

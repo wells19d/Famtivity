@@ -22,7 +22,7 @@ import { useAuth, useFamily, useProfile, useUser } from './src/hooks/useHooks';
 import { getAuth } from '@react-native-firebase/auth';
 import { getApp } from '@react-native-firebase/app';
 import { enableScreens } from 'react-native-screens';
-// import { RTFamilies, RTUsers, RTProfiles } from './src/utilities/realtime';
+import { RTFamilies, RTUsers, RTProfiles } from './src/utilities/realtime';
 import { devLogin } from './z-sandbox/devLogin';
 
 interface MainProps {
@@ -149,9 +149,9 @@ const Main: React.FC<MainProps> = props => {
 
   // Step 3: Set up real-time listeners only when we have the necessary context
   // This will prevent us from setting up listeners that will fail or cause errors because we don't have the necessary information.
-  // const RTEnabled = isAuthenticated && family !== null;
+  const RTEnabled = isAuthenticated && family !== null;
   // RTFamilies(RTEnabled);
-  // RTUsers(RTEnabled);
+  RTUsers(RTEnabled);
   // RTProfiles(RTEnabled);
   // RTTasks(RTEnabled);
 
@@ -195,6 +195,7 @@ const Main: React.FC<MainProps> = props => {
 
   const didAutoLogin = useRef(false);
 
+  // Test Login
   useEffect(() => {
     if (didAutoLogin.current) return;
     didAutoLogin.current = true;
@@ -207,6 +208,13 @@ const Main: React.FC<MainProps> = props => {
       },
     });
   }, [dispatch]);
+
+  // Test Logoout
+  // useEffect(() => {
+  //   dispatch({
+  //     type: 'LOGOUT_AND_CLEAR',
+  //   });
+  // }, [dispatch]);
 
   // useEffect(() => {
   //   if (user?._user) {

@@ -6,20 +6,18 @@ import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { useTestData } from '../../z-sandbox/useTestData';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
-import {
-  useAllowedProfiles,
-  useFamily,
-  useProfile,
-  useUser,
-} from '../hooks/useHooks';
+import { useFamily, useProfile, useUser } from '../hooks/useHooks';
 
 const Account = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
   const user = useUser();
   const profile = useProfile();
   const family = useFamily();
-  const familyMembers = useAllowedProfiles();
-  console.log('familyMembers in Account', familyMembers);
+  console.log('user in Account', user);
+  // console.log('profile in Account', profile);
+  // console.log('family in Account', family);
+  // const familyMembers = useAllowedProfiles();
+  // console.log('familyMembers in Account', familyMembers);
 
   const handlePress = () => {
     console.log('Navigating to Landing');

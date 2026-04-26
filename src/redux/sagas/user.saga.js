@@ -7,6 +7,7 @@ import {
   signOut,
 } from '@react-native-firebase/auth';
 import { persistor } from '../../../store';
+import { buildUser } from '../buildUser';
 
 const app = getApp();
 const auth = getAuth(app);
@@ -72,7 +73,7 @@ function* loginUser(action) {
       password,
     );
 
-    const user = userCredential?.user._user;
+    const user = buildUser(userCredential);
     const requireVerification = true;
 
     if (!requireVerification || user?.emailVerified) {
