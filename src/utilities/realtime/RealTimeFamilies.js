@@ -1,17 +1,14 @@
 //* RealTimeFamilies.js
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  getFirestore,
-  doc,
-  onSnapshot,
-} from '@react-native-firebase/firestore';
+import { doc, onSnapshot } from '@react-native-firebase/firestore';
 import { useProfile } from '../../hooks/useHooks';
+import { firebaseDB } from '../../redux/firebaseDB';
 
 const useRealTimeFamilies = enabled => {
   const dispatch = useDispatch();
   const profile = useProfile();
-  const db = getFirestore();
+  const db = firebaseDB;
 
   useEffect(() => {
     if (!enabled || !profile?.familyId) {
@@ -23,7 +20,7 @@ const useRealTimeFamilies = enabled => {
     const unsubscribe = onSnapshot(
       familyRef,
       snapshot => {
-        if (snapshot.exists) {
+        if (snapshot.exists()) {
           const familyData = snapshot.data();
           const family = {
             ...familyData,
@@ -45,7 +42,7 @@ const useRealTimeFamilies = enabled => {
     return () => {
       unsubscribe();
     };
-  }, [dispatch, profile?.familyId, db, enabled]); // ✅ Removed `storedFamily`
+  }, [dispatch, profile?.familyId, db, enabled]); // ✅ Removed storedFamily
 };
 
 export default useRealTimeFamilies;

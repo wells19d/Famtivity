@@ -37,10 +37,10 @@ export const useAllowedProfiles = () => {
   return useSelector(state => state.family?.allowedProfiles);
 };
 
-// export const useTasks = () => {
-//   return useSelector(state => state.tasks?.tasks);
-// };
+export const useTasks = () => {
+  return useSelector(state => state.task?.tasks);
+};
 
-// export const useTasksError = () => {
-//   return useSelector(state => state.tasks?.error);
-// };
+export const useTasksError = () => {
+  return useSelector(state => state.task?.error);
+};

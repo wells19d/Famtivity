@@ -1,4 +1,4 @@
-//*family.saga.jsx
+//*family.saga.js
 import { put, takeLatest, call, all } from 'redux-saga/effects';
 import {
   getDoc,
@@ -21,7 +21,7 @@ function* fetchFamily(action) {
     if (familyDoc.exists()) {
       const familyData = familyDoc.data();
 
-      const isAllowed = familyData?.allowedUsers?.includes(id);
+      const isAllowed = familyData?.allowedProfiles?.includes(id);
 
       if (isAllowed) {
         yield put({
@@ -47,9 +47,9 @@ function* fetchFamily(action) {
 
 // Needs update
 function* fetchAllowedProfiles(action) {
-  const { allowedUsers } = action.payload;
+  const { allowedProfilesArray } = action.payload;
   try {
-    const profilesPromises = allowedUsers.map(userId =>
+    const profilesPromises = allowedProfilesArray.map(userId =>
       call(getDoc, doc(db, 'profiles', userId)),
     );
 
@@ -57,7 +57,7 @@ function* fetchAllowedProfiles(action) {
 
     const allowedProfiles = profilesSnapshots
       .map(snapshot => {
-        if (!snapshot.exists) return null;
+        if (!snapshot.exists()) return null;
 
         const profileData = snapshot.data();
         return {

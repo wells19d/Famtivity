@@ -1,17 +1,14 @@
 //* RealTimeProfiles.js
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  getFirestore,
-  doc,
-  onSnapshot,
-} from '@react-native-firebase/firestore';
+import { doc, onSnapshot } from '@react-native-firebase/firestore';
 import { useUser } from '../../hooks/useHooks';
+import { firebaseDB } from '../../redux/firebaseDB';
 
 const useRealTimeProfiles = enabled => {
   const dispatch = useDispatch();
   const user = useUser();
-  const db = getFirestore();
+  const db = firebaseDB;
 
   useEffect(() => {
     if (!enabled || !user?.uid) {
@@ -23,7 +20,7 @@ const useRealTimeProfiles = enabled => {
     const unsubscribe = onSnapshot(
       profileRef,
       snapshot => {
-        if (snapshot.exists) {
+        if (snapshot.exists()) {
           const profileData = snapshot.data();
           const profilePayload = {
             ...profileData,

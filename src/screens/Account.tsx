@@ -3,21 +3,29 @@
 import React from 'react';
 import { Text, View, Icons } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { useTestData } from '../../z-sandbox/useTestData';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
-import { useFamily, useProfile, useUser } from '../hooks/useHooks';
+import {
+  useAllowedProfiles,
+  useFamily,
+  useProfile,
+  useTasks,
+  useUser,
+} from '../hooks/useHooks';
 
 const Account = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
   const user = useUser();
   const profile = useProfile();
   const family = useFamily();
-  console.log('user in Account', user);
+  const allowedProfiles = useAllowedProfiles();
+  const tasks = useTasks();
+  // console.log('user in Account', user);
   // console.log('profile in Account', profile);
   // console.log('family in Account', family);
-  // const familyMembers = useAllowedProfiles();
-  // console.log('familyMembers in Account', familyMembers);
+  // console.log('tasks in Account', tasks);
+
+  // console.log('allowedProfiles in Account', allowedProfiles);
 
   const handlePress = () => {
     console.log('Navigating to Landing');
@@ -60,6 +68,8 @@ const Account = () => {
         {renderObject('User', user)}
         {renderObject('Profile', profile)}
         {renderObject('Family', family)}
+        {/* {renderObject('Allowed Profiles', allowedProfiles)} */}
+        {renderObject('Tasks', tasks)}
       </View>
     </View>
   );

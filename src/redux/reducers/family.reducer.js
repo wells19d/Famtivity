@@ -1,4 +1,4 @@
-//* family.reducer.jsx
+//* family.reducer.js
 const initialState = {
   family: null,
   allowedProfiles: [],

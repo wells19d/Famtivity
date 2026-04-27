@@ -1,4 +1,4 @@
-//* login.saga.jsx
+//* login.saga.js
 
 import { put, takeLatest, select, call } from 'redux-saga/effects';
 
@@ -19,8 +19,7 @@ function* handleLogin(action) {
     const familyData = yield call(waitForFamily);
 
     // ✅ Step 3: Fetch tasks - paused for now.
-    // const { familyId } = familyData;
-    // yield put({ type: 'FETCH_TASKS', payload: { familyId } });
+    yield put({ type: 'FETCH_TASKS', payload: { familyID: familyData.id } });
   } catch (error) {
     yield put({ type: 'LOGIN_SEQUENCE_FAILED', payload: error.message });
   }

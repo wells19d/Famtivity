@@ -1,4 +1,4 @@
-//*profile.saga.jsx
+//*profile.saga.js
 import { put, takeLatest, call } from 'redux-saga/effects';
 import Toast from 'react-native-toast-message';
 import {
