@@ -23,7 +23,7 @@ const Account = () => {
   // console.log('user in Account', user);
   // console.log('profile in Account', profile);
   // console.log('family in Account', family);
-  // console.log('tasks in Account', tasks);
+  console.log('tasks in Account', tasks);
 
   // console.log('allowedProfiles in Account', allowedProfiles);
 

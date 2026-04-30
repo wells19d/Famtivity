@@ -15,6 +15,12 @@ import {
 } from '@react-native-firebase/firestore';
 import { firebaseDB } from '../firebaseDB';
 import uuid from 'react-native-uuid';
+import {
+  canArchiveTask,
+  canDeleteTask,
+  canOverrideTask,
+  canUpdateTask,
+} from '../../utilities/helpers';
 
 const db = firebaseDB;
 
@@ -42,11 +48,12 @@ function* addTask(action) {
   const { newTask, profileID, familyID } = action.payload;
 
   try {
-    const taskRef = doc(collection(db, 'tasks'));
+    const taskID = uuid.v4();
+    const taskRef = doc(db, 'tasks', taskID);
 
     const newTaskData = {
       ...newTask,
-      id: uuid.v4(),
+      id: taskID,
       familyId: familyID,
       createdBy: profileID,
       lastUpdatedBy: profileID,
@@ -77,20 +84,17 @@ function* updateTask(action) {
     if (taskDoc.exists()) {
       const taskData = taskDoc.data();
 
-      const isOwner = taskData.createdBy === profile.id;
-      const isAssigned = taskData.assignedTo?.includes(profile.id);
+      if (taskData.archived) {
+        yield put({
+          type: 'UPDATE_TASK_FAILED',
+          payload:
+            'Archived tasks cannot be updated. Please unarchive the task first.',
+        });
+        // Failed Toast Message Here
+        return;
+      }
 
-      // Update rules:
-      // 1. Task must belong to the same family
-      // 2. If task is adultOnly → user must NOT be a child
-      // 3. If task is private → only owner or assigned users can access
-      // 4. If task is locked → only owner can edit
-
-      const canUpdate =
-        taskData.familyId === familyID &&
-        (!taskData.adultOnly || profile.familyRole !== 'child') &&
-        (!taskData.private || isOwner || isAssigned) &&
-        (!taskData.taskLocked || isOwner);
+      const canUpdate = canUpdateTask(taskData, profile, familyID);
 
       if (canUpdate) {
         const updatedTaskData = {
@@ -123,14 +127,156 @@ function* updateTask(action) {
   }
 }
 
+function* parentalOverrideTask(action) {
+  const { taskID, updatedTask, profile, familyID } = action.payload;
+
+  try {
+    const taskRef = doc(db, 'tasks', taskID);
+    const taskDoc = yield call(getDoc, taskRef);
+
+    if (taskDoc.exists()) {
+      const taskData = taskDoc.data();
+      const canOverride = canOverrideTask(taskData, profile, familyID);
+
+      if (taskData.archived) {
+        yield put({
+          type: 'PARENTAL_OVERRIDE_TASK_FAILED',
+          payload:
+            'Archived tasks cannot be updated. Please unarchive the task first.',
+        });
+        // Failed Toast Message Here
+        return;
+      }
+
+      if (canOverride) {
+        const updatedTaskData = {
+          ...updatedTask,
+          lastUpdatedBy: profile.id,
+          lastUpdated: serverTimestamp(),
+        };
+
+        yield call(updateDoc, taskRef, updatedTaskData);
+
+        yield put({ type: 'PARENTAL_OVERRIDE_TASK_SUCCESS' });
+        // Success Toast Message Here
+      } else {
+        yield put({
+          type: 'PARENTAL_OVERRIDE_TASK_FAILED',
+          payload: 'You do not have permission to override this task.',
+        });
+        // Failed Toast Message Here
+      }
+    } else {
+      yield put({
+        type: 'PARENTAL_OVERRIDE_TASK_FAILED',
+        payload: 'Task not found.',
+      });
+      // TNF Toast Message Here
+    }
+  } catch (error) {
+    yield put({
+      type: 'PARENTAL_OVERRIDE_TASK_FAILED',
+      payload: error.message,
+    });
+    // Error Toast Message Here
+  }
+}
+
+function* archiveTask(action) {
+  const { taskID, profile, familyID } = action.payload;
+
+  try {
+    const taskRef = doc(db, 'tasks', taskID);
+    const taskDoc = yield call(getDoc, taskRef);
+
+    if (taskDoc.exists()) {
+      const taskData = taskDoc.data();
+      const canArchive = canArchiveTask(taskData, profile, familyID);
+
+      if (taskData.archived) {
+        yield put({
+          type: 'ARCHIVE_TASK_FAILED',
+          payload: 'Task is already archived.',
+        });
+        return;
+      }
+
+      const historyData = [
+        ...(taskData.history || []),
+        {
+          action: 'archived',
+          performedBy: profile.id,
+          performedAt: new Date().toISOString(),
+        },
+      ];
+
+      if (canArchive) {
+        const updatedTaskData = {
+          status: 'archived',
+          history: historyData,
+          archived: true,
+          archivedDate: serverTimestamp(),
+        };
+
+        yield call(updateDoc, taskRef, updatedTaskData);
+
+        yield put({ type: 'ARCHIVE_TASK_SUCCESS' });
+        // Success Toast Message Here
+      } else {
+        yield put({
+          type: 'ARCHIVE_TASK_FAILED',
+          payload: 'You do not have permission to archive this task.',
+        });
+        // Failed Toast Message Here
+      }
+    } else {
+      yield put({
+        type: 'ARCHIVE_TASK_FAILED',
+        payload: 'Task not found.',
+      });
+      // TNF Toast Message Here
+    }
+  } catch (error) {
+    yield put({ type: 'ARCHIVE_TASK_FAILED', payload: error.message });
+    // Error Toast Message Here
+  }
+}
+
 function* deleteTask(action) {
-  // this will delete a task from the current family
-  // this will not be a true delete
-  // 1. set archived set to true
-  // 2. set archivedDate to serverTimestamp
-  // 3. set status to archived
-  // 4. lastUpdated to serverTimestamp
-  // 5. add a history log entry
+  // THIS IS A TRUE DELETE, THIS SHOULD ONLY BE USED BY ADMINS
+  const { taskID, profile, familyID } = action.payload;
+
+  try {
+    const taskRef = doc(db, 'tasks', taskID);
+    const taskDoc = yield call(getDoc, taskRef);
+
+    if (taskDoc.exists()) {
+      const taskData = taskDoc.data();
+
+      const canDelete = canDeleteTask(taskData, profile, familyID);
+
+      if (canDelete) {
+        yield call(deleteDoc, taskRef);
+        yield put({ type: 'DELETE_TASK_SUCCESS' });
+        // Success Toast Message Here
+      } else {
+        yield put({
+          type: 'DELETE_TASK_FAILED',
+          payload: 'You do not have permission to delete this task.',
+        });
+        // Failed Toast Message Here
+      }
+    } else {
+      yield put({
+        type: 'DELETE_TASK_FAILED',
+        payload: 'Task not found.',
+      });
+      // TNF Toast Message Here
+    }
+  } catch (error) {
+    yield put({ type: 'DELETE_TASK_FAILED', payload: error.message });
+    // Error Toast Message Here
+  }
 }
 
 function* resetTasks(action) {
@@ -142,6 +288,8 @@ export default function* taskSaga() {
   yield takeLatest('FETCH_TASKS', fetchTasks);
   yield takeLatest('ADD_TASK', addTask);
   yield takeLatest('UPDATE_TASK', updateTask);
+  yield takeLatest('PARENTAL_OVERRIDE_TASK', parentalOverrideTask);
+  yield takeLatest('ARCHIVE_TASK', archiveTask);
   yield takeLatest('DELETE_TASK', deleteTask);
   yield takeLatest('RESET_TASKS', resetTasks);
 }

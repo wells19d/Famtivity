@@ -17,7 +17,7 @@ const taskReducer = (state = initialState, action) => {
     case 'TASKS_SET_FAILED':
       return { ...state, loading: false, error: action.payload };
 
-    // ➕ Add Item
+    // ➕ Add Task
     case 'ADD_TASK':
       return { ...state, loading: true, error: null };
 
@@ -27,7 +27,7 @@ const taskReducer = (state = initialState, action) => {
     case 'ADD_TASK_FAILED':
       return { ...state, loading: false, error: action.payload };
 
-    // ✏️ Update Item
+    // ✏️ Update Task
     case 'UPDATE_TASK':
       return { ...state, loading: true, error: null };
 
@@ -37,7 +37,27 @@ const taskReducer = (state = initialState, action) => {
     case 'UPDATE_TASK_FAILED':
       return { ...state, loading: false, error: action.payload };
 
-    // ❌ Delete Item
+    // 👪 Parental Override
+    case 'PARENTAL_OVERRIDE_TASK':
+      return { ...state, loading: true, error: null };
+
+    case 'PARENTAL_OVERRIDE_TASK_SUCCESS':
+      return { ...state, loading: false, error: null };
+
+    case 'PARENTAL_OVERRIDE_TASK_FAILED':
+      return { ...state, loading: false, error: action.payload };
+
+    // 📦 Archive Task
+    case 'ARCHIVE_TASK':
+      return { ...state, loading: true, error: null };
+
+    case 'ARCHIVE_TASK_SUCCESS':
+      return { ...state, loading: false, error: null };
+
+    case 'ARCHIVE_TASK_FAILED':
+      return { ...state, loading: false, error: action.payload };
+
+    // ❌ Delete Task
     case 'DELETE_TASK':
       return { ...state, loading: true, error: null };
 
