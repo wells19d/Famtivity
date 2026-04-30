@@ -146,3 +146,62 @@
 ### Struggles
 
 - None
+
+## 04-20-2026
+
+### What we did
+
+- Fixed Firebase real-time listener issues causing unexpected errors
+- Identified and isolated issues tied to unfinished real-time listener setup
+- Updated family.saga to correctly use getFirestore(app, 'default')
+- Confirmed family data is now being retrieved successfully
+- Verified user, profile, and family data flow working together in Redux
+
+### Struggles
+
+- Real-time listeners caused confusing and misleading errors
+- Debugging was difficult due to overlapping saga and listener behavior
+- Some errors appeared unrelated to the actual root cause
+
+## 04-24-2026
+
+### What we did
+
+- Built Firebase Admin import tooling in a separate local environment
+- Created import script to batch upload families, profiles, and tasks
+- Resolved Firestore NOT_FOUND issue using getFirestore(app, 'default')
+- Standardized Firebase modular usage across sagas
+- Cleaned up data shape to avoid Firebase internal warnings
+- Implemented login, user, and profile sagas (ported and adapted from previous project)
+
+### Struggles
+
+- Firestore initialization issues caused blocking errors during import
+- Needed to troubleshoot differences between Admin SDK and client SDK usage
+- Data normalization required to avoid Firestore serialization warnings
+
+## 04-28-2026 - 04-30-2026
+
+### What we did
+
+- Completed full task saga system:
+  - addTask, updateTask, archiveTask, deleteTask, parentalOverrideTask
+- Introduced centralized permission helpers:
+  - canUpdateTask, canArchiveTask, canDeleteTask, canOverrideTask, canViewTask
+- Refactored all saga logic to use helper-based permission checks
+- Upgraded task schema:
+  - Replaced assignedTo array of strings with object-based structure
+  - Added per-user confirmation (confirmed, confirmedAt)
+  - Removed taskConfirmed field
+- Implemented strict archive behavior:
+  - Archived tasks are a hard stop for updates and overrides
+- Added structured history logging for updates and archive actions
+- Cleaned up reducer to support all task actions consistently
+- Improved data consistency and prepared schema for UI filtering logic
+
+### Struggles
+
+- Transitioning assignedTo structure required updates across multiple layers (saga, helpers, UI logic)
+- Permission logic became complex and required abstraction into helper functions
+- Timestamp inconsistencies during import vs runtime required clarification
+- Needed to carefully separate UI logic vs saga responsibility for permissions and visibility
