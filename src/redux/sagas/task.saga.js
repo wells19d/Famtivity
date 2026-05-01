@@ -1,5 +1,4 @@
 //* tasks.saga.js
-// copilot: disable
 import { put, takeLatest, call } from 'redux-saga/effects';
 import {
   updateDoc,
@@ -12,6 +11,7 @@ import {
   where,
   setDoc,
   deleteDoc,
+  writeBatch,
 } from '@react-native-firebase/firestore';
 import { firebaseDB } from '../firebaseDB';
 import uuid from 'react-native-uuid';
@@ -280,8 +280,29 @@ function* deleteTask(action) {
 }
 
 function* resetTasks(action) {
-  // this will delete all tasks from the current family
-  // this will be a true delete that removes all tasks for the family
+  const { familyID } = action.payload;
+
+  try {
+    const tasksQuery = query(
+      collection(db, 'tasks'),
+      where('familyId', '==', familyID),
+    );
+
+    const tasksSnapshot = yield call(getDocs, tasksQuery);
+
+    const batch = writeBatch(db);
+
+    tasksSnapshot.forEach(documentSnapshot => {
+      batch.delete(documentSnapshot.ref);
+    });
+
+    yield call(() => batch.commit());
+
+    yield put({ type: 'RESET_TASKS_SUCCESS' });
+  } catch (error) {
+    console.log('RESET_TASKS error:', error);
+    yield put({ type: 'RESET_TASKS_FAILED', payload: error.message });
+  }
 }
 
 export default function* taskSaga() {

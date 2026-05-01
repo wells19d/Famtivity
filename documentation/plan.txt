@@ -1,0 +1,41 @@
+
+
+Home:
+- This is a personal view of tasks / events assigned to you.
+- Day/Week/Month filters.
+- Quick actions for Complete, Edit, Delete (if you made the task).
+
+Tasks: (This is a Creation or Edit Screen)
+- Tasks are chores, events, appointments, sports, school activities, reminders.
+- Adults can create and edit tasks.
+- Children can make their own tasks (auto assigned).
+- Tasks created by adults can be assigned or left unassigned (They will go into the To-Do List). 
+- Tasks can be flagged for important deadlines and private tasks can be limited to specific adults and children.
+- Flagged or private tasks can only be edited or deleted by the creator.
+- Children can make private tasks, but they are only private from other children.
+- Adults can mark the task or event as a parent task, children can not be assigned or claim it
+(We need to add something that prevents tasks being done early if they are a "time" or "day")
+
+Pending (Adults):
+- Tasks that are assigned to an adult, will come here for user appoval.
+- If the task is flagged, an adult can still refuse the task, just the creator will be notified.
+- Decined tasks go back into the To-Do List.
+
+Parents:
+- These are all the assigned tasks and etc assigned to your children.
+
+Family: 
+- This is a shared overview with everyone invited on your group, so everyone can see who’s doing what and when.
+- If a task is private, it will not show up here.
+
+To-Do:
+- Unassigned tasks that can claimed or reassign.
+- Adult tasks will not show up for children.
+
+Medications:
+- Dose reminders with notifications, acknowledgments (Taken / Remind Later / Reject for adults), follow-up reminders, and parent oversight for children.
+
+Bills / Payments: Shared invoices, payment tracking, and optional bill splitting.
+
+History:
+A toggle-style view. One side shows a breakdown of all tasks assigned to you and their completion status, sortable by Complete, Incomplete, and task type. The other side shows medication history, likely as a statistical summary of completed doses and dates missed or rejected.

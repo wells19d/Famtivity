@@ -1,0 +1,60 @@
+ --- Global Rules:
+
+ 1. Archived Tasks:
+    - Only visible in the History screen.
+    - Cannot be edited.
+    - Visible only to users who created the task or were assigned to it.
+
+ 2. Adult Only Tasks:
+    - Only users with role 'adult' or 'admin' can see these tasks.
+
+ 3. Assignment + Confirmation:
+    - Tasks use assignedTo as an array of objects:
+      [
+        {
+          profileID: string,
+          confirmed: boolean,
+          confirmedAt: timestamp | null,
+        }
+      ]
+    - A task is considered "confirmed" per user.
+    - A task is considered "pending" for a user if:
+        assignedTo includes that user AND confirmed === false.
+
+ 4. Private Tasks:
+    - Only visible to:
+        a. The user who created the task
+        b. Users assigned to the task
+
+ --- View (UI): Tasks by Screens:
+
+ My Tasks:
+ - Tasks assigned to the logged-in user
+ - AND assignedTo.confirmed === true
+
+ Family Tasks:
+ - All tasks for the family (by familyId), EXCEPT:
+   1. Private tasks not assigned to the user
+   2. AdultOnly tasks when the user is a child
+   3. Tasks assigned to the user where confirmed === false
+
+ Children (Admin/Adult only screen):
+ - Tasks assigned to child profiles
+ - Includes private tasks if assigned
+ - Only tasks where assignedTo.confirmed === true
+
+ Pending Tasks:
+ - Tasks assigned to the logged-in user
+ - AND assignedTo.confirmed === false
+
+ Unclaimed Tasks:
+ - Tasks where assignedTo.length === 0
+   1. All users can assign themselves
+   2. Admins and Adults can assign to anyone
+   3. Children can only assign to themselves
+
+ History:
+ - Archived tasks (archived === true)
+ - Visible if:
+    a. createdBy === user
+    b. OR user is in assignedTo

@@ -12,6 +12,7 @@ import {
   useTasks,
   useUser,
 } from '../hooks/useHooks';
+import { useDispatch } from 'react-redux';
 
 const Account = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
@@ -20,16 +21,24 @@ const Account = () => {
   const family = useFamily();
   const allowedProfiles = useAllowedProfiles();
   const tasks = useTasks();
+  const dispatch = useDispatch();
   // console.log('user in Account', user);
   // console.log('profile in Account', profile);
   // console.log('family in Account', family);
-  console.log('tasks in Account', tasks);
+  // console.log('tasks in Account', tasks);
 
   // console.log('allowedProfiles in Account', allowedProfiles);
 
   const handlePress = () => {
     console.log('Navigating to Landing');
     navigation.navigate('Landing');
+  };
+
+  const handleResetTasks = () => {
+    console.log('Resetting Tasks');
+    console.log('family', family?.id);
+    dispatch({ type: 'RESET_TASKS', payload: { familyID: family?.id } });
+    // Dispatch reset tasks action here
   };
 
   const renderObject = (title: any, obj: any) => {
@@ -64,6 +73,7 @@ const Account = () => {
         Account
       </Text>
       <Button title="Back to Landing" onPress={handlePress} />
+      <Button title="Reset Tasks" onPress={handleResetTasks} />
       <View>
         {renderObject('User', user)}
         {renderObject('Profile', profile)}
