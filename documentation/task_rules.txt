@@ -25,6 +25,8 @@
     - Only visible to:
         a. The user who created the task
         b. Users assigned to the task
+        c. Blocked users can not see assign tasks.
+        d. Can not Block a user that either created or is assigned to a private task.
 
  --- View (UI): Tasks by Screens:
 

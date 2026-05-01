@@ -10,6 +10,6 @@ export { IconList as Icons } from './IconList';
 // export { default as Input } from './UIInput';
 // export { default as Dropdown } from './UIDropdown';
 // export { default as MultiDropdown } from './UIMultiDropDown';
-// export { default as ScrollView } from './UIScrollView';
+export { default as ScrollView } from './UIScrollView';
 // export { default as Image } from './UIImage';
 // export { default as Camera } from './UICamera';

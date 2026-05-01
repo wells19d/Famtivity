@@ -27,6 +27,7 @@ import {
   RTUsers,
   RTProfiles,
   RTAllowedProfiles,
+  RTTasks,
 } from './src/utilities/realtime';
 import { devLogin } from './z-sandbox/devLogin';
 
@@ -159,7 +160,7 @@ const Main: React.FC<MainProps> = props => {
   RTUsers(RTEnabled);
   RTProfiles(RTEnabled);
   RTAllowedProfiles(RTEnabled);
-  // RTTasks(RTEnabled);
+  RTTasks(RTEnabled);
 
   // this will be used later to display TOS and PP modals if the user hasn't accepted the latest versions
   // AppInfo.tosVersion and AppInfo.ppVersion will be defined in a separate file that we can update with each release

@@ -280,9 +280,17 @@ function* deleteTask(action) {
 }
 
 function* resetTasks(action) {
-  const { familyID } = action.payload;
+  const { familyID, profile } = action.payload;
 
   try {
+    if (!profile || profile.familyRole !== 'admin') {
+      yield put({
+        type: 'RESET_TASKS_FAILED',
+        payload: 'Only admins can reset tasks.',
+      });
+      return;
+    }
+
     const tasksQuery = query(
       collection(db, 'tasks'),
       where('familyId', '==', familyID),

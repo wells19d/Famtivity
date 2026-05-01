@@ -1,7 +1,7 @@
 //* Account.tsx
 
 import React from 'react';
-import { Text, View, Icons } from '../ui';
+import { Text, View, Icons, ScrollView } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
@@ -13,6 +13,7 @@ import {
   useUser,
 } from '../hooks/useHooks';
 import { useDispatch } from 'react-redux';
+import { canViewTask } from '../utilities/helpers';
 
 const Account = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
@@ -34,12 +35,17 @@ const Account = () => {
     navigation.navigate('Landing');
   };
 
-  const handleResetTasks = () => {
-    console.log('Resetting Tasks');
-    console.log('family', family?.id);
-    dispatch({ type: 'RESET_TASKS', payload: { familyID: family?.id } });
-    // Dispatch reset tasks action here
+  const keyChecker = (key: string) => {
+    const num = Number(key);
+    return isNaN(num) ? key : num + 1;
   };
+
+  const visibleTasks = tasks.filter((task: any) =>
+    canViewTask(task, profile, family.id),
+  );
+
+  console.log('visibleTasks in Account', tasks);
+  console.log('visibleTasks in Account', visibleTasks);
 
   const renderObject = (title: any, obj: any) => {
     if (!obj) return null;
@@ -53,7 +59,7 @@ const Account = () => {
         {Object.entries(obj).map(([key, value]) => (
           <View key={key} row>
             <View>
-              <Text numberOfLines={1}>{key}:</Text>
+              <Text numberOfLines={1}>{keyChecker(key)}:</Text>
             </View>
 
             <View style={{ flex: 1 }}>
@@ -68,20 +74,21 @@ const Account = () => {
   };
 
   return (
-    <View style={{ borderWidth: 1, borderColor: 'red' }} flex p5>
-      <Text size="medium" color="blue">
-        Account
-      </Text>
-      <Button title="Back to Landing" onPress={handlePress} />
-      <Button title="Reset Tasks" onPress={handleResetTasks} />
-      <View>
-        {renderObject('User', user)}
-        {renderObject('Profile', profile)}
-        {renderObject('Family', family)}
-        {/* {renderObject('Allowed Profiles', allowedProfiles)} */}
-        {renderObject('Tasks', tasks)}
+    <ScrollView hideBar>
+      <View flex>
+        <Text size="medium" color="blue">
+          Account: {tasks?.length ? `${tasks.length} tasks` : 'No tasks'}
+        </Text>
+        <Button title="Back to Landing" onPress={handlePress} />
+        <View>
+          {renderObject('User', user)}
+          {renderObject('Profile', profile)}
+          {renderObject('Family', family)}
+          {renderObject('Allowed Profiles', allowedProfiles)}
+          {renderObject('Tasks', visibleTasks)}
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

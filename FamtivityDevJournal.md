@@ -205,3 +205,18 @@
 - Permission logic became complex and required abstraction into helper functions
 - Timestamp inconsistencies during import vs runtime required clarification
 - Needed to carefully separate UI logic vs saga responsibility for permissions and visibility
+
+## 05-01-2026
+
+### What we did
+
+- Completed / updated task saga for Hard Reset per family. (Admin Action Only)
+- Updated canViewTask for blockedView. Which is an array of strings of users blocked from the task. Preventing a user from seeing a private task. (ex: parent and child private task from another parent. aka buy a birthday present)
+- Updated database structure for tasks for blockedView
+- Moved `plan.txt` and `task_rules.txt` into a documentation folder for public view.
+- Created Realtime Listener for tasks.
+- Added New UI component for custom scroll viewing.
+
+### Struggles
+
+- Reading project allowed, determined that if a parent and a child wanted a private task and not be visible to another parent, we would need something to block users from seeing it, since in the children section, all parents would be able to see all child tasks. This will now prevent a blocked parent from seeing a task created by another adult with a child. We will have to put in the UI that a blocked user can not be the person it was assigned to or who created it. Also, children will not be able to block any users in their private tasks. All adults need to be able to see all tasks they are not blocked from.

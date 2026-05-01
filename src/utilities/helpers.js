@@ -105,6 +105,8 @@ export const canViewTask = (task, profile, familyID) => {
 
   const isAssigned = !!assignedUser;
 
+  const isBlocked = task.blockedView?.includes(profile.id);
+
   const isAdult =
     profile.familyRole === 'adult' || profile.familyRole === 'admin';
 
@@ -114,6 +116,7 @@ export const canViewTask = (task, profile, familyID) => {
 
   return (
     task.familyId === familyID &&
+    !isBlocked &&
     (!task.adultOnly || isAdult) &&
     (!task.private || isOwner || isAssigned)
   );
