@@ -121,3 +121,17 @@ export const canViewTask = (task, profile, familyID) => {
     (!task.private || isOwner || isAssigned)
   );
 };
+
+export const findName = (id, profiles) => {
+  if (!id || !profiles?.length) return 'Unknown';
+
+  const foundProfile = profiles.find(p => p.id === id);
+
+  return foundProfile
+    ? `${foundProfile.firstName} ${foundProfile.lastName}`
+    : 'Unknown';
+};
+
+export const getVisibleTasks = (tasks, profile, familyID) => {
+  return (tasks || []).filter(task => canViewTask(task, profile, familyID));
+};

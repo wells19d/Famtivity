@@ -13,7 +13,7 @@ import {
   useUser,
 } from '../hooks/useHooks';
 import { useDispatch } from 'react-redux';
-import { canViewTask } from '../utilities/helpers';
+import { getVisibleTasks } from '../utilities/helpers';
 
 const Account = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
@@ -22,13 +22,12 @@ const Account = () => {
   const family = useFamily();
   const allowedProfiles = useAllowedProfiles();
   const tasks = useTasks();
+  const visibleTasks = getVisibleTasks(tasks, profile, family?.id);
   const dispatch = useDispatch();
   // console.log('user in Account', user);
   // console.log('profile in Account', profile);
   // console.log('family in Account', family);
   // console.log('tasks in Account', tasks);
-
-  // console.log('allowedProfiles in Account', allowedProfiles);
 
   const handlePress = () => {
     console.log('Navigating to Landing');
@@ -39,13 +38,6 @@ const Account = () => {
     const num = Number(key);
     return isNaN(num) ? key : num + 1;
   };
-
-  const visibleTasks = tasks.filter((task: any) =>
-    canViewTask(task, profile, family.id),
-  );
-
-  console.log('visibleTasks in Account', tasks);
-  console.log('visibleTasks in Account', visibleTasks);
 
   const renderObject = (title: any, obj: any) => {
     if (!obj) return null;
@@ -77,7 +69,8 @@ const Account = () => {
     <ScrollView hideBar>
       <View flex>
         <Text size="medium" color="blue">
-          Account: {tasks?.length ? `${tasks.length} tasks` : 'No tasks'}
+          Tasks:{' '}
+          {visibleTasks?.length ? `${visibleTasks.length} tasks` : 'No tasks'}
         </Text>
         <Button title="Back to Landing" onPress={handlePress} />
         <View>
