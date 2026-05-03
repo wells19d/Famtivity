@@ -13,11 +13,10 @@ export const useMyTasks = () => {
   const tasks = useTasks();
   const visibleTasks = getVisibleTasks(tasks, profile, family?.id);
 
-  const myTasks = (visibleTasks || []).filter(task =>
-    task.assignedTo?.some(
-      t =>
-        t.profileID === profile.id && t.confirmed && t.status !== 'completed',
-    ),
+  const myTasks = (visibleTasks || []).filter(
+    task =>
+      task.status !== 'completed' &&
+      task.assignedTo?.some(t => t.profileID === profile.id && t.confirmed),
   );
 
   return {
