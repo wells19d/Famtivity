@@ -1,14 +1,16 @@
-//* Histor.tsx
+//* History.tsx
 
 import React from 'react';
-import { Text, View, Icons } from '../ui';
+import { Text, View } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { useTestData } from '../../z-sandbox/useTestData';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
+import { useHistoryTasks } from '../utilities/tasks/historyTasks';
 
 const History = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
+  const historyTasks = useHistoryTasks();
+  console.log('historyTasks in History', historyTasks);
 
   const handlePress = () => {
     console.log('Navigating to Landing');

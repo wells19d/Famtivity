@@ -1,14 +1,16 @@
 //* ChildTasks.tsx
 
 import React from 'react';
-import { Text, View, Icons } from '../ui';
+import { Text, View } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { useTestData } from '../../z-sandbox/useTestData';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
+import { useChildTasks } from '../utilities/tasks/childTasks';
 
 const ChildTasks = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
+  const childTasks = useChildTasks();
+  console.log('childTasks in ChildTasks', childTasks);
 
   const handlePress = () => {
     console.log('Navigating to Landing');

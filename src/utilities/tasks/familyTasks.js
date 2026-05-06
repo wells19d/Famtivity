@@ -1,4 +1,4 @@
-// myTasks.js
+// familyTasks.js
 
 import {
   useAllowedProfiles,
@@ -8,19 +8,20 @@ import {
 } from '../../hooks/useHooks';
 import { getVisibleTasks, findName } from '../helpers';
 
-export const useMyTasks = () => {
+export const useFamilyTasks = () => {
   const profile = useProfile();
   const family = useFamily();
   const profiles = useAllowedProfiles();
   const tasks = useTasks();
-  console.log('tasks in useMyTasks', tasks);
   const visibleTasks = getVisibleTasks(tasks, profile, family?.id);
 
-  const myTasks = (visibleTasks || []).filter(task =>
-    task.assignedTo?.some(t => t.profileID === profile.id && t.confirmed),
+  const familyTasks = (visibleTasks || []).filter(
+    task =>
+      !task.assignedTo?.some(t => t.profileID === profile.id) &&
+      task.assignedTo?.some(t => t.confirmed),
   );
 
-  return (myTasks || []).map(task => ({
+  return (familyTasks || []).map(task => ({
     ...task,
     createdByName: findName(task?.createdBy, profiles),
     // dateCreated: formatted time, // TODO: use moment to change time stamp

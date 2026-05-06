@@ -1,3 +1,4 @@
+// coreInfo.js
 import {
   useAllowedProfiles,
   useFamily,

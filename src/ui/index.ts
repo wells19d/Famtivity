@@ -1,4 +1,4 @@
-//* index.js (ui kit)
+//* index.ts (ui kit)
 export { default as View } from './UIView';
 export { default as Text } from './UIText';
 export { IconList as Icons } from './IconList';

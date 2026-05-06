@@ -1,14 +1,16 @@
 //* PendingTasks.tsx
 
 import React from 'react';
-import { Text, View, Icons } from '../ui';
+import { Text, View } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { useTestData } from '../../z-sandbox/useTestData';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
+import { usePendingTasks } from '../utilities/tasks/pendingTasks';
 
 const PendingTasks = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
+  const pendingTasks = usePendingTasks();
+  console.log('pendingTasks in PendingTasks', pendingTasks);
 
   const handlePress = () => {
     console.log('Navigating to Landing');

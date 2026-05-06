@@ -94,6 +94,7 @@ export const canOverrideTask = (task, profile, familyID) => {
   return task.familyId === familyID && isAdult;
 };
 
+// checks a singular task against the task visibility rules
 export const canViewTask = (task, profile, familyID) => {
   if (!task || !profile) return false;
 
@@ -132,6 +133,7 @@ export const findName = (id, profiles) => {
     : 'Unknown';
 };
 
+// builds a list of tasks based on visibility rules
 export const getVisibleTasks = (tasks, profile, familyID) => {
   return (tasks || []).filter(task => canViewTask(task, profile, familyID));
 };

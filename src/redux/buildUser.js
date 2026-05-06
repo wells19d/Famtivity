@@ -1,3 +1,5 @@
+// buildUser.js
+// This is to build the user object we get from firebase
 export const buildUser = userInfo => {
   if (!userInfo) return null;
 
