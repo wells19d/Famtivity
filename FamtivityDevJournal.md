@@ -220,3 +220,14 @@
 ### Struggles
 
 - Reading project allowed, determined that if a parent and a child wanted a private task and not be visible to another parent, we would need something to block users from seeing it, since in the children section, all parents would be able to see all child tasks. This will now prevent a blocked parent from seeing a task created by another adult with a child. We will have to put in the UI that a blocked user can not be the person it was assigned to or who created it. Also, children will not be able to block any users in their private tasks. All adults need to be able to see all tasks they are not blocked from.
+
+## 05-06-2026
+
+### What we did
+
+- Completed the task helpers per screen.
+- Updated My Tasks helper's return to remove inside object not needed. Did the same with the remaining except for history, history will need an inside object to return completed and archived.
+
+### Struggles
+
+- I was struggling if I made the helpers doing double checks that were not needed. Worried I was checking twice over data instead of focusing on what was still needed to be filtered per screen. Ran my filters through chat gpt and determined I had the right mindset, I was just confusing myself... maybe just a "off brain day". Next I move onto the UI and how we want to handle task displays views. (not adding or editing yet).
