@@ -69,6 +69,7 @@ const UIView = ({
   borderBottomWidth = 0,
   borderTopWidth = 0,
   borderColor = 'black',
+  borderRadius = 0,
 
   // Margin and padding (numeric or shorthand)
   m,
@@ -109,6 +110,7 @@ const UIView = ({
       s.borderWidth = 0;
     }
     if (borderColor) s.borderColor = borderColor;
+    if (borderRadius) s.borderRadius = borderRadius;
 
     if (centerVH) {
       s.justifyContent = 'center';

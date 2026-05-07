@@ -5,11 +5,11 @@ import { Text, View } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
-import { useUnclaimedTasks } from '../utilities/tasks/unclaimedTasks';
+import { useTaskManager } from '../utilities/tasks/taskManager';
 
 const UnclaimedTasks = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
-  const unclaimedTasks = useUnclaimedTasks();
+  const { unclaimedTasks } = useTaskManager();
   console.log('unclaimedTasks in UnclaimedTasks', unclaimedTasks);
 
   const handlePress = () => {

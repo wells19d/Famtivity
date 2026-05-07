@@ -5,11 +5,11 @@ import { Text, View } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
-import { useFamilyTasks } from '../utilities/tasks/familyTasks';
+import { useTaskManager } from '../utilities/tasks/taskManager';
 
 const FamilyTasks = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
-  const familyTasks = useFamilyTasks();
+  const { familyTasks } = useTaskManager();
 
   console.log('familyTasks in FamilyTasks', familyTasks);
 

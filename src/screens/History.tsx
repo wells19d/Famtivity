@@ -5,11 +5,11 @@ import { Text, View } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
-import { useHistoryTasks } from '../utilities/tasks/historyTasks';
+import { useTaskManager } from '../utilities/tasks/taskManager';
 
 const History = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
-  const historyTasks = useHistoryTasks();
+  const { historyTasks } = useTaskManager();
   console.log('historyTasks in History', historyTasks);
 
   const handlePress = () => {

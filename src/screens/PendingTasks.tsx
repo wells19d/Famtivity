@@ -5,11 +5,11 @@ import { Text, View } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
-import { usePendingTasks } from '../utilities/tasks/pendingTasks';
+import { useTaskManager } from '../utilities/tasks/taskManager';
 
 const PendingTasks = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
-  const pendingTasks = usePendingTasks();
+  const { pendingTasks } = useTaskManager();
   console.log('pendingTasks in PendingTasks', pendingTasks);
 
   const handlePress = () => {

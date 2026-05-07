@@ -231,3 +231,16 @@
 ### Struggles
 
 - I was struggling if I made the helpers doing double checks that were not needed. Worried I was checking twice over data instead of focusing on what was still needed to be filtered per screen. Ran my filters through chat gpt and determined I had the right mindset, I was just confusing myself... maybe just a "off brain day". Next I move onto the UI and how we want to handle task displays views. (not adding or editing yet).
+
+## 05-07-2026
+
+### What we did
+
+- Updated the structure of how we use a task system into a task management system.
+- Started first Draft design of our task displays on `My Tasks` using family tasks for now since we had more test data.
+- Updated Icons
+- Updated View
+
+### Struggles
+
+- None at this time. Mostly just trial and error of UI design.

@@ -2849,7 +2849,7 @@ PODS:
   - react-native-vector-icons-lucide (13.1.1)
   - react-native-vector-icons-material-design-icons (13.1.1)
   - react-native-vector-icons-material-icons (13.1.1)
-  - react-native-vector-icons-octicons (21.0.0)
+  - react-native-vector-icons-octicons (21.1.1)
   - react-native-vector-icons-simple-line-icons (13.1.1)
   - react-native-vector-icons-zocial (13.1.1)
   - React-NativeModulesApple (0.84.1):
@@ -3924,7 +3924,7 @@ SPEC CHECKSUMS:
   react-native-vector-icons-lucide: 77e8b002a23df4e8667ccb1ca8ca841288625678
   react-native-vector-icons-material-design-icons: 99c750d15cbc5df6f240bf1e7a45a0c07d42a015
   react-native-vector-icons-material-icons: 1c5ff7b5da7188a9885b2f0b8f12ed8afa4a0ea2
-  react-native-vector-icons-octicons: 6aa0923b15ed5cb0511ebfafe644285956bfed8d
+  react-native-vector-icons-octicons: 5d6770160e881909fd771c9c92a5139a3c11c7b6
   react-native-vector-icons-simple-line-icons: 120e856fdf3c0e4777169dc89b60a01af44da7f3
   react-native-vector-icons-zocial: e8cb4f2b826322d323f8c786eed1f58b7bf0596f
   React-NativeModulesApple: 1eade1fa3a182fbfe8a0ffe80833daf35e5161de

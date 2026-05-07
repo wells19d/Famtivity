@@ -5,11 +5,11 @@ import { Text, View } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { Button } from 'react-native';
 import { NavParams } from '../navigation/types';
-import { useChildTasks } from '../utilities/tasks/childTasks';
+import { useTaskManager } from '../utilities/tasks/taskManager';
 
 const ChildTasks = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
-  const childTasks = useChildTasks();
+  const { childTasks } = useTaskManager();
   console.log('childTasks in ChildTasks', childTasks);
 
   const handlePress = () => {

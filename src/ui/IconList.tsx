@@ -161,6 +161,9 @@ export const IconList = {
   Settings: (props: IconProps) => (
     <IIcons name="settings-sharp" size={20} color="#000" {...props} />
   ),
+  Status: (props: IconProps) => (
+    <FAIcons name="circle" size={20} color="#000" {...props} />
+  ),
   Tasks: (props: IconProps) => (
     <FA5Icons
       name="tasks"
@@ -177,6 +180,9 @@ export const IconList = {
       color="#000"
       {...props}
     />
+  ),
+  UserLock: (props: IconProps) => (
+    <MDIcons name="eye-lock-outline" size={20} color="#000" {...props} />
   ),
   XCircle: (props: IconProps) => (
     <OctIcons name="x-circle-fill" size={20} color="#000" {...props} />
