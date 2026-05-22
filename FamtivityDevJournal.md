@@ -244,3 +244,15 @@
 ### Struggles
 
 - None at this time. Mostly just trial and error of UI design.
+
+## 05-08-2026 - 05-22-2026
+
+### What we did
+
+- Built out task filter views in `My Tasks` along with a new component, `SlideToggle` with 3 filtered views for `Hourly`, `Today`, and `All`.
+- Moved build view logic system into a re-useable component `TaskSystem` for `My Tasks`, `Family Tasks`, and `Child Tasks`.
+- Added format systems in `helper.js` for reusability.
+
+### Struggles
+
+- Not really any struggles except for some spread key prop in jsx errors. To correct them, used chat gpt to mute the console.log and logbox to `index.js`.

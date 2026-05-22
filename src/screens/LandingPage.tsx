@@ -14,7 +14,7 @@ const LandingPage = () => {
   // Later we will be adding the haptic feedback system
 
   const handlePress = (navigate: keyof NavParams) => () => {
-    console.log(`Navigating to ${navigate}`);
+    // console.log(`Navigating to ${navigate}`);
     navigation.navigate(navigate);
   };
 
@@ -47,11 +47,11 @@ const LandingPage = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderWidth: 0.5,
-                borderColor: borderColor || '#f3f3f3',
+                borderColor: borderColor || '#ffffff',
                 height: buttonSize,
                 width: buttonSize,
                 borderRadius: 12,
-                backgroundColor: color || '#f3f3f3',
+                backgroundColor: color || '#ffffff',
                 shadowColor: '#000',
                 shadowOffset: { width: 1, height: 2 },
                 shadowOpacity: 0.25,

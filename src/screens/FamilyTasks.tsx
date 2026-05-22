@@ -1,31 +1,14 @@
 //* FamilyTasks.tsx
 
 import React from 'react';
-import { Text, View } from '../ui';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { Button } from 'react-native';
-import { NavParams } from '../navigation/types';
 import { useTaskManager } from '../utilities/tasks/taskManager';
 
+import TaskSystem from './TaskSystem';
+
 const FamilyTasks = () => {
-  const navigation = useNavigation<NavigationProp<NavParams>>();
   const { familyTasks } = useTaskManager();
 
-  console.log('familyTasks in FamilyTasks', familyTasks);
-
-  const handlePress = () => {
-    console.log('Navigating to Landing');
-    navigation.navigate('Landing');
-  };
-
-  return (
-    <View flex centerVH>
-      <Text size="medium" color="blue">
-        Family Tasks
-      </Text>
-      <Button title="Back to Landing" onPress={handlePress} />
-    </View>
-  );
+  return <TaskSystem taskType={familyTasks} />;
 };
 
 export default FamilyTasks;

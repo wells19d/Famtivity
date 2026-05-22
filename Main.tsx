@@ -216,7 +216,7 @@ const Main: React.FC<MainProps> = props => {
     });
   }, [dispatch]);
 
-  // Test Logoout
+  // Test Logout
   // useEffect(() => {
   //   dispatch({
   //     type: 'LOGOUT_AND_CLEAR',
@@ -261,7 +261,7 @@ const styles = {
   },
   overlay: (currentRoute: string) => ({
     ...StyleSheet.absoluteFill,
-    backgroundColor: currentRoute === 'Landing' ? '#f3f3f360' : '#f3f3f3',
+    backgroundColor: currentRoute === 'Landing' ? '#f3f3f360' : '#ffffff',
   }),
 };
 

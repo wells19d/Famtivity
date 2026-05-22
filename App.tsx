@@ -82,7 +82,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   ghrv: { flex: 1 },
-  outerContainer: { backgroundColor: '#f3f3f3' },
+  outerContainer: { backgroundColor: '#ffffff' },
 });
 
 export default App;

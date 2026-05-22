@@ -1,29 +1,14 @@
 //* ChildTasks.tsx
 
 import React from 'react';
-import { Text, View } from '../ui';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { Button } from 'react-native';
-import { NavParams } from '../navigation/types';
 import { useTaskManager } from '../utilities/tasks/taskManager';
 
-const ChildTasks = () => {
-  const navigation = useNavigation<NavigationProp<NavParams>>();
-  const { childTasks } = useTaskManager();
-  console.log('childTasks in ChildTasks', childTasks);
+import TaskSystem from './TaskSystem';
 
-  const handlePress = () => {
-    console.log('Navigating to Landing');
-    navigation.navigate('Landing');
-  };
-  return (
-    <View flex centerVH>
-      <Text size="medium" color="blue">
-        Child Tasks
-      </Text>
-      <Button title="Back to Landing" onPress={handlePress} />
-    </View>
-  );
+const ChildTasks = () => {
+  const { childTasks } = useTaskManager();
+
+  return <TaskSystem taskType={childTasks} />;
 };
 
 export default ChildTasks;
