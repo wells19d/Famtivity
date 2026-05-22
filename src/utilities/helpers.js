@@ -334,7 +334,7 @@ export const allEventsTaskFormat = tasks => {
 
 export const taskTime = (hours, minutes) => {
   if (hours === 0 && minutes === 0) return null;
-  return `Duration: ${hours > 0 ? (hours === 1 ? '1hr ' : `${hours}hrs `) : ''}${minutes > 0 ? (minutes === 1 ? '1 min' : `${minutes} mins`) : ''}`;
+  return `${hours > 0 ? (hours === 1 ? '1hr ' : `${hours}hrs `) : ''}${minutes > 0 ? (minutes === 1 ? '1 min' : `${minutes} mins`) : ''}`;
 };
 
 export const dueTime = (endTime, selectedDate) => {

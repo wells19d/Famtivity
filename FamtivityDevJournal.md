@@ -262,7 +262,14 @@
 
 - Moved build view logic system into a re-useable component `TaskSystem` for `My Tasks`, `Family Tasks`, and `Child Tasks`.
 - Changed UI to Hour, Day, All per verbage.
+- Updated profile data set for `familyColor`
+- Setup Rough Draft for All and Day task cards
+- - Removed the word title, using a bar that takes the color for taskColor
+- - Removed description wording from helper.
+- - Updated Duration with Icon
+- - Update assignedTo to take person logged in first, then build out.
+- - Removed verbage assigned to and replaced with icon, then using color from the first assigned person, using `familyColor`, just for easier identification.
 
 ### Struggles
 
--
+- None.

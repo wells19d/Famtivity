@@ -43,7 +43,9 @@ const TaskList = (props: Props) => {
           <Icons.Clock size={15} />
         </View>
         <View flex ml5>
-          <Text font="open-5">{taskTime(taskHours, taskMinutes)}</Text>
+          <Text font="open-5">
+            Duration: {taskTime(taskHours, taskMinutes)}
+          </Text>
         </View>
       </View>
     );
