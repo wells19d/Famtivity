@@ -25,7 +25,16 @@ const spacingKeys = [
   'pv',
 ] as const;
 
-const spacingValues = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50] as const;
+const spacingValues = [
+  ...Array.from({ length: 15 }, (_, i) => i + 1),
+  20,
+  25,
+  30,
+  35,
+  40,
+  45,
+  50,
+] as const;
 
 const getSpacingProps = (props: Record<string, any>) => {
   const result: Partial<Record<(typeof spacingKeys)[number], number>> = {};
@@ -70,6 +79,7 @@ const UIView = ({
   borderTopWidth = 0,
   borderColor = 'black',
   borderRadius = 0,
+  bg = 'transparent',
 
   // Margin and padding (numeric or shorthand)
   m,
@@ -111,6 +121,7 @@ const UIView = ({
     }
     if (borderColor) s.borderColor = borderColor;
     if (borderRadius) s.borderRadius = borderRadius;
+    if (bg) s.backgroundColor = bg;
 
     if (centerVH) {
       s.justifyContent = 'center';

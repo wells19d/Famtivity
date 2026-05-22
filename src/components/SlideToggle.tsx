@@ -2,8 +2,8 @@
 
 import React, { useEffect, useMemo, useRef } from 'react';
 import { Animated, Pressable, StyleSheet } from 'react-native';
-import { Text, View } from '.';
-import { useColors } from './UIUtilities';
+import { Text, View } from '../ui';
+import { useColors } from '../ui/UIUtilities';
 
 const options = ['hourly', 'today', 'all'] as const;
 
@@ -49,9 +49,9 @@ const SlideToggle = ({ value, onChange }: Props) => {
                 size="small"
               >
                 {option === 'hourly'
-                  ? 'Hourly'
+                  ? 'Hour'
                   : option === 'today'
-                    ? 'Today'
+                    ? 'Day'
                     : 'All'}
               </Text>
             </Pressable>

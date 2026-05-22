@@ -89,6 +89,9 @@ export const IconList = {
   CirclePlus: (props: IconProps) => (
     <ADIcons name="plus-circle" size={20} color="#000" {...props} />
   ),
+  Clock: (props: IconProps) => (
+    <ADIcons name="clock-circle" size={20} color="#000" {...props} />
+  ),
   Close: (props: IconProps) => (
     <MDIcons name="close" size={20} color="#000" {...props} />
   ),
@@ -158,11 +161,15 @@ export const IconList = {
   Pending: (props: IconProps) => (
     <MIIcons name="pending-actions" size={20} color="#000" {...props} />
   ),
+
   Settings: (props: IconProps) => (
     <IIcons name="settings-sharp" size={20} color="#000" {...props} />
   ),
   Status: (props: IconProps) => (
     <FAIcons name="circle" size={20} color="#000" {...props} />
+  ),
+  Tag: (props: IconProps) => (
+    <FA6Icons iconStyle="solid" name="tag" size={20} color="#000" {...props} />
   ),
   Tasks: (props: IconProps) => (
     <FA5Icons

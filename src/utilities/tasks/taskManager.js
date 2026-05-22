@@ -54,37 +54,37 @@ export const useTaskManager = () => {
   const myTasks = (visibleTasks || [])
     .filter(task => isMyTask(task, profile))
     .sort(sortBy)
-    .map(task => formatTask(task, profiles));
+    .map(task => formatTask(task, profiles, profile));
 
   const familyTasks = (visibleTasks || [])
     .filter(task => isFamilyTask(task, profile))
     .sort(sortBy)
-    .map(task => formatTask(task, profiles));
+    .map(task => formatTask(task, profiles, profile));
 
   const pendingTasks = (visibleTasks || [])
     .filter(task => isPendingTask(task, profile))
     .sort(sortBy)
-    .map(task => formatTask(task, profiles));
+    .map(task => formatTask(task, profiles, profile));
 
   const unclaimedTasks = (visibleTasks || [])
     .filter(isUnclaimedTask)
     .sort(sortBy)
-    .map(task => formatTask(task, profiles));
+    .map(task => formatTask(task, profiles, profile));
 
   const childTasks = (visibleTasks || [])
     .filter(task => isChildTask(task, profiles))
     .sort(sortBy)
-    .map(task => formatTask(task, profiles));
+    .map(task => formatTask(task, profiles, profile));
 
   const archivedTasks = (visibleTasks || [])
     .filter(isArchivedTask)
     .sort(sortBy)
-    .map(task => formatTask(task, profiles));
+    .map(task => formatTask(task, profiles, profile));
 
   const completedTasks = (visibleTasks || [])
     .filter(isCompletedTask)
     .sort(sortBy)
-    .map(task => formatTask(task, profiles));
+    .map(task => formatTask(task, profiles, profile));
 
   return {
     myTasks,
