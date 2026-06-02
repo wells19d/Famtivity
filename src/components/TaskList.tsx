@@ -77,7 +77,7 @@ const TaskList = (props: Props) => {
           borderColor="#c4c4c4"
           ml15
           mr15
-          mb10
+          mb15
           bg="#f3f3f3"
           p10
         >
@@ -95,8 +95,9 @@ const TaskList = (props: Props) => {
     if (item.type === 'header') {
       const header = item;
       return (
-        <View pb5 pl10 mt5>
-          <Text>
+        <View pb5 pl10 mt10>
+          <View border borderColor="#e6e6e6" ml15 mr25 mb10 />
+          <Text size="medium">
             {header.title} - {header.subtitle}
           </Text>
         </View>

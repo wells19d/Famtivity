@@ -4,6 +4,7 @@ export const isMyTask = (task, profile) =>
   task.assignedTo?.some(t => t.profileID === profile.id && t.confirmed);
 
 export const isFamilyTask = (task, profile) =>
+  !task.private &&
   !task.assignedTo?.some(t => t.profileID === profile.id) &&
   task.assignedTo?.some(t => t.confirmed);
 

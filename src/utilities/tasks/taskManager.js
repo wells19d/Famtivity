@@ -27,6 +27,7 @@ export const useTaskManager = () => {
   const family = useFamily();
   const profiles = useAllowedProfiles();
   const tasks = useTasks();
+  console.log('tasks', tasks);
 
   const priorityRank = {
     high: 1,

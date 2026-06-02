@@ -22,8 +22,8 @@ export const useTheme = () => {
       textDayHeaderFontWeight: open6.fontWeight,
     },
     timelineList: {
-      header: { size: 'xSmall', font: 'open-6', color: 'dark' },
-      body: { size: 'tiny', font: 'open-5', color: 'dark70' },
+      header: { size: 'small', font: 'open-7', color: 'dark' },
+      body: { size: 'xSmall', font: 'open-5', color: 'dark90' },
     },
   };
 };
