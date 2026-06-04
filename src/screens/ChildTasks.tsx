@@ -8,7 +8,9 @@ import TaskSystem from '../components/TaskSystem';
 const ChildTasks = () => {
   const { childTasks } = useTaskManager();
 
-  return <TaskSystem taskType={childTasks} createMode="child" />;
+  return (
+    <TaskSystem taskType={childTasks} createMode="child" screen="ChildTasks" />
+  );
 };
 
 export default ChildTasks;

@@ -62,7 +62,11 @@ const NavHeader = ({
       case 'Create':
         return {
           label: 'Create',
-          icon: <Icons.CirclePlus size={20} />,
+          icon: (
+            <View pl5>
+              <Icons.CirclePlus size={20} />
+            </View>
+          ),
           action:
             rightAction ||
             (() =>
@@ -74,14 +78,22 @@ const NavHeader = ({
       case 'Save':
         return {
           label: 'Save',
-          icon: <Icons.Check size={20} />,
+          icon: (
+            <View pl5>
+              <Icons.Check size={20} />
+            </View>
+          ),
           action: rightAction,
         };
 
       case 'Update':
         return {
           label: 'Update',
-          icon: <Icons.Check size={20} />,
+          icon: (
+            <View pl5>
+              <Icons.Check size={20} />
+            </View>
+          ),
           action: rightAction,
         };
 

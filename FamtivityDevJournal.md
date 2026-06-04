@@ -261,14 +261,27 @@
 ### What we did
 
 - Moved build view logic system into a re-useable component `TaskSystem` for `My Tasks`, `Family Tasks`, and `Child Tasks`.
-- Changed UI to Hour, Day, All per verbage.
+- Changed UI to Hour, Day, All per verbiage.
 - Updated profile data set for `familyColor`
 - Setup Rough Draft for All and Day task cards
 - - Removed the word title, using a bar that takes the color for taskColor
 - - Removed description wording from helper.
 - - Updated Duration with Icon
 - - Update assignedTo to take person logged in first, then build out.
-- - Removed verbage assigned to and replaced with icon, then using color from the first assigned person, using `familyColor`, just for easier identification.
+- - Removed verbiage assigned to and replaced with icon, then using color from the first assigned person, using `familyColor`, just for easier identification.
+
+### Struggles
+
+- None.
+
+## 05-24-2026 - 06-04-2026
+
+### What we did
+
+- Updated NavHeader to take predetermined buttons and actions. Added `screens` prop to conditional for showing the toggle filter.
+- Updated TaskSystem to pass `createMode` to determine which create action will be determined based on screen origin, along with left and right nav buttons. Added useMemo to conditionally block toggle filter for `PendingTasks` and `UnclaimedTasks`.
+- Updated task screens to take `createMode`,`taskType`'s, and `screens`.
+- Added `CreateTask` and `UpdateTask` components for create and updates for tasks.
 
 ### Struggles
 

@@ -1,6 +1,6 @@
 //* TaskSystem.tsx
 
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, Text, Icons } from '../ui';
 import NavHeader from '../ui/NavHeader';
 import SlideToggle from './SlideToggle';
@@ -20,12 +20,13 @@ import {
 import TaskList from './TaskList';
 
 type TaskSystemProps = {
+  screen?: string;
   taskType: any[];
   createMode: string;
 };
 
 const TaskSystem = (props: TaskSystemProps) => {
-  const { taskType, createMode } = props;
+  const { taskType, createMode, screen } = props;
   const theme = useTheme();
   const timelineTheme = theme.timelineList;
 
@@ -45,6 +46,9 @@ const TaskSystem = (props: TaskSystemProps) => {
   const todayItems = todayEventTaskFormat(taskType, selectedDate);
   const allEvents = allEventsTaskFormat(taskType);
 
+  const showToggle =
+    screen === 'MyTasks' || screen === 'FamilyTasks' || screen === 'ChildTasks';
+
   if (viewType === 'hourly') {
     return (
       <View flex backgroundColor="#ffffff">
@@ -53,9 +57,11 @@ const TaskSystem = (props: TaskSystemProps) => {
           leftButton="Back"
           rightButton="Create"
         />
-        <View alignItems="center">
-          <SlideToggle value={viewType} onChange={setViewType} />
-        </View>
+        {showToggle && (
+          <View alignItems="center">
+            <SlideToggle value={viewType} onChange={setViewType} />
+          </View>
+        )}
         <CalendarProvider
           date={selectedDate}
           showTodayButton
@@ -105,9 +111,11 @@ const TaskSystem = (props: TaskSystemProps) => {
           leftButton="Back"
           rightButton="Create"
         />
-        <View alignItems="center">
-          <SlideToggle value={viewType} onChange={setViewType} />
-        </View>
+        {showToggle && (
+          <View alignItems="center">
+            <SlideToggle value={viewType} onChange={setViewType} />
+          </View>
+        )}
         <CalendarProvider
           date={selectedDate}
           showTodayButton
@@ -138,9 +146,11 @@ const TaskSystem = (props: TaskSystemProps) => {
           leftButton="Back"
           rightButton="Create"
         />
-        <View alignItems="center">
-          <SlideToggle value={viewType} onChange={setViewType} />
-        </View>
+        {showToggle && (
+          <View alignItems="center">
+            <SlideToggle value={viewType} onChange={setViewType} />
+          </View>
+        )}
         <View flex mh10>
           <TaskList
             data={allEvents}
