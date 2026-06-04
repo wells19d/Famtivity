@@ -19,12 +19,13 @@ import {
 
 import TaskList from './TaskList';
 
-type Props = {
+type TaskSystemProps = {
   taskType: any[];
+  createMode: string;
 };
 
-const TaskSystem = (props: Props) => {
-  const { taskType } = props;
+const TaskSystem = (props: TaskSystemProps) => {
+  const { taskType, createMode } = props;
   const theme = useTheme();
   const timelineTheme = theme.timelineList;
 
@@ -47,7 +48,11 @@ const TaskSystem = (props: Props) => {
   if (viewType === 'hourly') {
     return (
       <View flex backgroundColor="#ffffff">
-        <NavHeader />
+        <NavHeader
+          createMode={createMode}
+          leftButton="Back"
+          rightButton="Create"
+        />
         <View alignItems="center">
           <SlideToggle value={viewType} onChange={setViewType} />
         </View>
@@ -95,7 +100,11 @@ const TaskSystem = (props: Props) => {
   if (viewType === 'today') {
     return (
       <View flex backgroundColor="#ffffff">
-        <NavHeader />
+        <NavHeader
+          createMode={createMode}
+          leftButton="Back"
+          rightButton="Create"
+        />
         <View alignItems="center">
           <SlideToggle value={viewType} onChange={setViewType} />
         </View>
@@ -124,7 +133,11 @@ const TaskSystem = (props: Props) => {
   if (viewType === 'all') {
     return (
       <View flex backgroundColor="#ffffff" pb10>
-        <NavHeader />
+        <NavHeader
+          createMode={createMode}
+          leftButton="Back"
+          rightButton="Create"
+        />
         <View alignItems="center">
           <SlideToggle value={viewType} onChange={setViewType} />
         </View>

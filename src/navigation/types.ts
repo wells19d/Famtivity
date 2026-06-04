@@ -11,4 +11,6 @@ export type NavParams = {
   History: undefined;
   Account: undefined;
   Settings: undefined;
+  CreateTask: { createMode: string } | undefined;
+  UpdateTask: { task: object } | undefined;
 };

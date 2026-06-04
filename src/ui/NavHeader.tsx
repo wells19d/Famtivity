@@ -1,36 +1,124 @@
 //* NavHeader.tsx
 
 import React from 'react';
-import { useState, useCallback } from 'react';
-import { View, Text, Icons } from '.';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { NavParams } from '../navigation/types';
 import { Pressable, StyleSheet } from 'react-native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
-const NavHeader = () => {
+import { View, Text, Icons } from '.';
+import { NavParams } from '../navigation/types';
+
+type ButtonType = 'None' | 'Back' | 'Cancel' | 'Create' | 'Save' | 'Update';
+
+type Props = {
+  title?: string;
+  createMode?: string;
+  leftButton?: ButtonType;
+  rightButton?: ButtonType;
+  leftAction?: () => void;
+  rightAction?: () => void;
+};
+
+type ButtonConfig = {
+  label: string;
+  icon?: React.ReactNode;
+  action?: () => void;
+};
+
+const NavHeader = ({
+  title = '',
+  createMode,
+  leftButton,
+  rightButton,
+  leftAction,
+  rightAction,
+}: Props) => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
 
-  const handleBack = () => {
-    navigation.navigate('Landing');
+  const resolvedLeftButton: ButtonType = leftButton ?? 'Back';
+  const resolvedRightButton: ButtonType =
+    rightButton ?? (createMode ? 'Create' : 'None');
+
+  const getButtonConfig = (
+    buttonType: ButtonType,
+    side: 'left' | 'right',
+  ): ButtonConfig | null => {
+    switch (buttonType) {
+      case 'None':
+        return null;
+
+      case 'Back':
+        return {
+          label: 'Back',
+          icon: <Icons.Back size={20} />,
+          action: leftAction || (() => navigation.goBack()),
+        };
+
+      case 'Cancel':
+        return {
+          label: 'Cancel',
+          action: leftAction || (() => navigation.goBack()),
+        };
+
+      case 'Create':
+        return {
+          label: 'Create',
+          icon: <Icons.CirclePlus size={20} />,
+          action:
+            rightAction ||
+            (() =>
+              navigation.navigate('CreateTask', {
+                createMode: createMode ?? 'mine',
+              })),
+        };
+
+      case 'Save':
+        return {
+          label: 'Save',
+          icon: <Icons.Check size={20} />,
+          action: rightAction,
+        };
+
+      case 'Update':
+        return {
+          label: 'Update',
+          icon: <Icons.Check size={20} />,
+          action: rightAction,
+        };
+
+      default:
+        return null;
+    }
+  };
+
+  const renderButton = (buttonType: ButtonType, side: 'left' | 'right') => {
+    const config = getButtonConfig(buttonType, side);
+
+    if (!config) {
+      return <View style={styles.side} />;
+    }
+
+    return (
+      <Pressable style={styles.side} onPress={config.action}>
+        <View row centerH style={side === 'right' && styles.rightButton}>
+          {side === 'left' && config.icon && <View pr5>{config.icon}</View>}
+
+          <Text size="medium">{config.label}</Text>
+
+          {side === 'right' && config.icon && <View pl5>{config.icon}</View>}
+        </View>
+      </Pressable>
+    );
   };
 
   return (
     <View style={styles.container}>
-      <View row>
-        <View flex ph15>
-          <Pressable onPress={handleBack}>
-            <View row centerH>
-              <View>
-                <Icons.Back />
-              </View>
-              <View>
-                <Text size="medium">Back</Text>
-              </View>
-            </View>
-          </Pressable>
-        </View>
-        <View flex></View>
+      {renderButton(resolvedLeftButton, 'left')}
+
+      <View flex centerH>
+        <Text size="medium">{title}</Text>
       </View>
+
+      {renderButton(resolvedRightButton, 'right')}
     </View>
   );
 };
@@ -38,5 +126,19 @@ const NavHeader = () => {
 export default NavHeader;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    height: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 15,
+  },
+
+  side: {
+    width: 90,
+    justifyContent: 'center',
+  },
+
+  rightButton: {
+    justifyContent: 'flex-end',
+  },
 });

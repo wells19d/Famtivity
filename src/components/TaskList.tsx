@@ -106,8 +106,6 @@ const TaskList = (props: Props) => {
 
     const task = item.task;
 
-    console.log('task', task);
-
     return (
       <View
         border

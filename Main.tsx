@@ -30,6 +30,8 @@ import {
   RTTasks,
 } from './src/utilities/realtime';
 import { devLogin } from './z-sandbox/devLogin';
+import CreateTask from './src/screens/CreateTask';
+import UpdateTask from './src/screens/UpdateTask';
 
 interface MainProps {
   appReady: boolean;
@@ -103,6 +105,16 @@ const Navigation = () => {
       <Stack.Screen
         name="Settings"
         component={Settings}
+        options={{ freezeOnBlur: true }}
+      />
+      <Stack.Screen
+        name="CreateTask"
+        component={CreateTask}
+        options={{ freezeOnBlur: true }}
+      />
+      <Stack.Screen
+        name="UpdateTask"
+        component={UpdateTask}
         options={{ freezeOnBlur: true }}
       />
     </Stack.Navigator>
