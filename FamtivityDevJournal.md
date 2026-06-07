@@ -286,3 +286,23 @@
 ### Struggles
 
 - None.
+
+## 06-07-2026
+
+### What we did
+
+- Updated task system so tags no longer show up if the logged in person is the only one assigned to the task.
+- Updated profile data structure, removed `familyColor` and added `userSettings` map for `userColor` and `hapticStrength`.
+- Added haptic feedback system to be used for custom button system.
+- Temp added a login / logout system in settings to test views among multiple users.
+- Updated key types in `UIUtilities.tsx` to get IntelliSense suggestions for types.
+- Added `UIButton` and updated export for custom UI Button with key types and haptic feedback.
+- I've determined that the landing page currently as it is... "Sucks". So we will be importing a better landing page with more of a more modern dashboard system.
+
+### Acknowledgement
+
+- After messing around more with key types and exporting them, found a better understanding for using TS with the props to gain access to IntelliSense to faster gain of selection choices I've predetermined with my custom components.
+
+### Struggles
+
+- I hate the landing page... determined that a change is needed. Brainstorming and researching modern dashboard systems / layouts.

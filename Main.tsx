@@ -29,7 +29,7 @@ import {
   RTAllowedProfiles,
   RTTasks,
 } from './src/utilities/realtime';
-import { devLogin } from './z-sandbox/devLogin';
+import { ajLogin } from './z-sandbox/devLogin';
 import CreateTask from './src/screens/CreateTask';
 import UpdateTask from './src/screens/UpdateTask';
 
@@ -215,18 +215,18 @@ const Main: React.FC<MainProps> = props => {
   const didAutoLogin = useRef(false);
 
   // Test Login
-  useEffect(() => {
-    if (didAutoLogin.current) return;
-    didAutoLogin.current = true;
+  // useEffect(() => {
+  //   if (didAutoLogin.current) return;
+  //   didAutoLogin.current = true;
 
-    dispatch({
-      type: 'LOGIN_REQUEST',
-      payload: {
-        email: devLogin.email,
-        password: devLogin.password,
-      },
-    });
-  }, [dispatch]);
+  //   dispatch({
+  //     type: 'LOGIN_REQUEST',
+  //     payload: {
+  //       email: ajLogin.email,
+  //       password: ajLogin.password,
+  //     },
+  //   });
+  // }, [dispatch]);
 
   // Test Logout
   // useEffect(() => {

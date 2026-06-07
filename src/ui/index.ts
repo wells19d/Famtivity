@@ -6,7 +6,7 @@ export { IconList as Icons } from './IconList';
 // export { default as Toast } from './UIToast';
 // export { default as Layout } from './UILayout';
 // export { default as Modal } from './UIModal';
-// export { default as Button } from './UIButton';
+export { default as Button } from './UIButton';
 // export { default as Input } from './UIInput';
 // export { default as Dropdown } from './UIDropdown';
 // export { default as MultiDropdown } from './UIMultiDropDown';

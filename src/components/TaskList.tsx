@@ -4,6 +4,7 @@ import React, { useCallback } from 'react';
 import { View, Text, Icons } from '../ui';
 import { dueTime, taskTime, listAssigned } from '../utilities/helpers';
 import { FlashList } from '@shopify/flash-list';
+import { useUser } from '../hooks/useHooks';
 
 type Props = {
   data: any[];
@@ -13,6 +14,7 @@ type Props = {
 
 const TaskList = (props: Props) => {
   const { data, renderType, selectedDate } = props;
+  const user = useUser();
 
   const showTitle = (task: any) => {
     return (
@@ -36,7 +38,7 @@ const TaskList = (props: Props) => {
   };
 
   const showDuration = (taskHours: number, taskMinutes: number) => {
-    if (!taskHours && !taskMinutes) return <View mb10 />;
+    if (!taskHours && !taskMinutes) return null;
     return (
       <View row centerH ml10 mt10>
         <View>
@@ -52,12 +54,20 @@ const TaskList = (props: Props) => {
   };
 
   const showAssigned = (task: any) => {
+    const userAssigned = task.assignedTo?.some(
+      (assigned: any) => assigned.profileID === user?.uid,
+    );
+
+    if (userAssigned && task.assignedTo?.length === 1) {
+      return null;
+    }
+
     return (
       <View row centerH ml10 mt10>
         <View style={{ transform: [{ scaleX: -1 }] }}>
           <Icons.Tag
             size={15}
-            color={task.assignedTo?.[0]?.familyColor || '#000'}
+            color={task.assignedTo?.[0]?.userColor || '#000'}
           />
         </View>
         <View flex ml5>

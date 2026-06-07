@@ -2,7 +2,6 @@
 import { Platform, TextStyle, ViewStyle } from 'react-native';
 import { useDeviceInfo } from '../hooks/useHooks';
 
-type ColorKey = string;
 export type FontKey =
   | 'noto-1'
   | 'noto-2'
@@ -47,8 +46,8 @@ export type FontSizeKey =
   | 'massive'
   | 'gargantuan';
 
-type ButtonType = 'filled' | 'outline' | 'ghost';
-type ButtonSizeKey =
+export type ButtonType = 'filled' | 'outline' | 'ghost';
+export type ButtonSizeKey =
   | 'macro'
   | 'micro'
   | 'xTiny'
@@ -61,7 +60,7 @@ type ButtonSizeKey =
   | 'massive'
   | 'gargantuan';
 
-type DeviceSizeKey = 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge';
+export type DeviceSizeKey = 'xSmall' | 'small' | 'medium' | 'large' | 'xLarge';
 
 type FontData = {
   ios: string;
@@ -77,79 +76,94 @@ type DeviceInfoShape = {
   };
 };
 
-export const useColors = (color: ColorKey): string => {
-  if (!color || typeof color !== 'string') return '#000000'; // Default to black
+export const colorPalette = {
+  black: '#000000',
+  white: '#ffffff',
 
-  const colors: Record<string, string> = {
-    black: '#000000',
-    white: '#ffffff',
-    //---
-    primary10: '#8dd1bd',
-    primary30: '#4ea68e',
-    primary: '#29856c',
-    primary70: '#198064',
-    primary90: '#0a654c',
-    //---
-    success10: '#bae6c0',
-    success30: '#91d299',
-    success: '#63b76C',
-    success70: '#3b9846',
-    success90: '#1e7b29',
-    //---
-    info10: '#91daee',
-    info30: '#02cfff',
-    info: '#009DC4',
-    info70: '#007590',
-    info90: '#005b71',
-    //---
-    warning10: '#ffd29a',
-    warning30: '#fdca78',
-    warning: '#dda44b',
-    warning70: '#c48726',
-    warning90: '#9b6510',
-    //---
-    danger10: '#f596a5',
-    danger30: '#ec5267',
-    danger: '#da2c43',
-    danger70: '#b51128',
-    danger90: '#900014',
-    //---
-    orange10: '#ffc58d',
-    orange30: '#f89656',
-    orange: '#e5762e',
-    orange70: '#bf5612',
-    orange90: '#8c3b00',
-    //---
-    lilac10: '#dbd1ea',
-    lilac30: '#beb2d5',
-    lilac: '#9483b6',
-    lilac70: '#6d5798',
-    lilac90: '#4e3c75',
-    //---
-    dark10: '#373d431A',
-    dark20: '#373d4333',
-    dark30: '#373d434D',
-    dark40: '#373d4366',
-    dark50: '#373d4380',
-    dark60: '#373d4399',
-    dark70: '#373d43B3',
-    dark80: '#373d43CC',
-    dark90: '#373d43E6',
-    dark: '#373d43',
-    //---
-    basic: '#C4C4C4',
-    gold: '#FFAE42',
-    transparent: 'transparent',
-  };
+  //---
+  primary10: '#8dd1bd',
+  primary30: '#4ea68e',
+  primary: '#29856c',
+  primary70: '#198064',
+  primary90: '#0a654c',
 
-  const normalizedColor = color.trim().toLowerCase();
+  //---
+  success10: '#bae6c0',
+  success30: '#91d299',
+  success: '#63b76C',
+  success70: '#3b9846',
+  success90: '#1e7b29',
 
-  // If it's a predefined color, return it
-  if (colors[normalizedColor]) {
-    return colors[normalizedColor];
+  //---
+  info10: '#91daee',
+  info30: '#02cfff',
+  info: '#009DC4',
+  info70: '#007590',
+  info90: '#005b71',
+
+  //---
+  warning10: '#ffd29a',
+  warning30: '#fdca78',
+  warning: '#dda44b',
+  warning70: '#c48726',
+  warning90: '#9b6510',
+
+  //---
+  danger10: '#f596a5',
+  danger30: '#ec5267',
+  danger: '#da2c43',
+  danger70: '#b51128',
+  danger90: '#900014',
+
+  //---
+  orange10: '#ffc58d',
+  orange30: '#f89656',
+  orange: '#e5762e',
+  orange70: '#bf5612',
+  orange90: '#8c3b00',
+
+  //---
+  lilac10: '#dbd1ea',
+  lilac30: '#beb2d5',
+  lilac: '#9483b6',
+  lilac70: '#6d5798',
+  lilac90: '#4e3c75',
+
+  //---
+  dark10: '#373d431A',
+  dark20: '#373d4333',
+  dark30: '#373d434D',
+  dark40: '#373d4366',
+  dark50: '#373d4380',
+  dark60: '#373d4399',
+  dark70: '#373d43B3',
+  dark80: '#373d43CC',
+  dark90: '#373d43E6',
+  dark: '#373d43',
+
+  //---
+  basic: '#C4C4C4',
+  gold: '#FFAE42',
+  transparent: 'transparent',
+} as const;
+
+export type ColorPaletteKey = keyof typeof colorPalette;
+
+export type ColorKey = ColorPaletteKey | (string & {});
+
+export const useColors = (color: ColorKey = 'black'): string => {
+  if (!color || typeof color !== 'string') return '#000000';
+
+  const normalizedColor = color.trim();
+
+  const paletteColor =
+    colorPalette[normalizedColor as ColorPaletteKey] ||
+    colorPalette[normalizedColor.toLowerCase() as ColorPaletteKey];
+
+  if (paletteColor) {
+    return paletteColor;
   }
 
-  // If it's a valid hex, RGB(A), or any normal color string, return it as is
   if (
     /^#([0-9A-F]{3}){1,2}$/i.test(color) ||
     color.startsWith('rgb') ||
@@ -158,7 +172,7 @@ export const useColors = (color: ColorKey): string => {
     return color;
   }
 
-  return '#000000'; // Default fallback
+  return '#000000';
 };
 
 const fontLookup: Record<string, FontData> = {

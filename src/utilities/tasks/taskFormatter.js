@@ -19,7 +19,7 @@ export const formatTask = (task, profiles, currentProfile) => {
       return {
         ...assigned,
         profileName: findName(assigned.profileID, profiles),
-        familyColor: profile?.familyColor,
+        userColor: profile?.userSettings?.userColor,
       };
     }),
 

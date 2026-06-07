@@ -1,9 +1,12 @@
 //* SlideToggle.tsx
 
 import React, { useEffect, useMemo, useRef } from 'react';
-import { Animated, Pressable, StyleSheet } from 'react-native';
+import { Animated, StyleSheet, TouchableOpacity } from 'react-native';
 import { Text, View } from '../ui';
 import { useColors } from '../ui/UIUtilities';
+import { useCoreInfo } from '../utilities/coreInfo';
+import { setHapticFeedback } from '../hooks/setHapticFeedback';
+import hapticFeedback from 'react-native-haptic-feedback';
 
 const options = ['hourly', 'today', 'all'] as const;
 
@@ -16,6 +19,8 @@ type Props = {
 
 const SlideToggle = ({ value, onChange }: Props) => {
   const selectedIndex = options.indexOf(value);
+  const useHaptics = setHapticFeedback();
+  const core = useCoreInfo();
 
   const translateX = useRef(new Animated.Value(selectedIndex * 100)).current;
 
@@ -43,7 +48,15 @@ const SlideToggle = ({ value, onChange }: Props) => {
 
         return (
           <React.Fragment key={option}>
-            <Pressable style={styles.button} onPress={() => onChange(option)}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                onChange(option);
+                useHaptics(
+                  core?.profile?.userSettings?.hapticStrength || hapticFeedback,
+                );
+              }}
+            >
               <Text
                 color={active ? ('white' as any) : ('dark' as any)}
                 size="small"
@@ -54,7 +67,7 @@ const SlideToggle = ({ value, onChange }: Props) => {
                     ? 'Day'
                     : 'All'}
               </Text>
-            </Pressable>
+            </TouchableOpacity>
 
             {index < options.length - 1 && <View style={styles.divider} />}
           </React.Fragment>

@@ -1,0 +1,131 @@
+//* UIButton.tsx
+import React, { useCallback } from 'react';
+import { Keyboard, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View } from '../ui';
+import { setHapticFeedback } from '../hooks/setHapticFeedback';
+import {
+  useColors,
+  useFontStyles,
+  useButtonStyles,
+  useButtonSizes,
+  ButtonType,
+  ButtonSizeKey,
+  FontSizeKey,
+  FontKey,
+  ColorKey,
+} from '../ui/UIUtilities';
+import { useCoreInfo } from '../utilities/coreInfo';
+
+type UIButtonProps = {
+  children?: React.ReactNode;
+  onPress?: () => void;
+  style?: any;
+  textStyle?: any;
+  outerTextStyle?: any;
+  type?: ButtonType;
+  size?: ButtonSizeKey;
+  color?: ColorKey;
+  textSize?: FontSizeKey;
+  textColor?: ColorKey;
+  fontType?: FontKey;
+  hapticFeedback?: string;
+  disabled?: boolean;
+  disabledColor?: ColorKey;
+  underline?: boolean;
+  underlineColor?: ColorKey | null;
+  underlineWidth?: number;
+  symbols?: boolean;
+  symbolStyle?: any;
+  [key: string]: any;
+};
+
+const UIButton: React.FC<UIButtonProps> = ({
+  children,
+  onPress,
+  style = {},
+  textStyle = {},
+  outerTextStyle = {},
+  type = 'filled',
+  size = 'small',
+  color = 'primary',
+  textSize = 'small',
+  textColor = 'white',
+  fontType = 'open-6',
+  hapticFeedback = 'light',
+  disabled = false,
+  disabledColor = 'basic',
+  underline = false,
+  underlineColor = null,
+  underlineWidth = 1,
+  symbols = false,
+  symbolStyle = {},
+  ...props
+}) => {
+  const useHaptics = setHapticFeedback();
+  const core = useCoreInfo();
+  const buttonColor = useColors(disabled ? disabledColor : color);
+  const buttonStyle = useButtonStyles(type, buttonColor);
+  const buttonSize = useButtonSizes(size);
+
+  const fontStyles = useFontStyles(
+    fontType,
+    textSize,
+    type === 'filled' ? textColor : buttonColor,
+  );
+
+  const handlePress = useCallback(() => {
+    Keyboard.dismiss();
+    useHaptics(core?.profile?.userSettings?.hapticStrength || hapticFeedback);
+    if (onPress) onPress();
+  }, [core?.profile?.userSettings?.hapticStrength, hapticFeedback, onPress]);
+
+  return (
+    <TouchableOpacity
+      style={[ButtonStyles.buttonOC, buttonStyle, buttonSize, style]}
+      onPress={!disabled ? handlePress : undefined}
+      disabled={disabled}
+      {...props}
+    >
+      <View
+        style={[
+          outerTextStyle,
+          {
+            borderBottomWidth: underline ? underlineWidth : 0,
+            borderColor: underlineColor || buttonColor,
+          },
+        ]}
+      >
+        {!symbols && (
+          <Text
+            numberOfLines={1}
+            style={[ButtonStyles.buttonText, fontStyles, textStyle]}
+          >
+            {children}
+          </Text>
+        )}
+        {symbols && (
+          <View centerVH style={symbolStyle}>
+            {children}
+          </View>
+        )}
+      </View>
+    </TouchableOpacity>
+  );
+};
+
+const ButtonStyles = StyleSheet.create({
+  buttonOC: {
+    borderRadius: 8,
+    marginHorizontal: 5,
+    marginVertical: 5,
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    fontSize: 16,
+    textAlign: 'center',
+  },
+});
+
+export default __DEV__ ? UIButton : React.memo(UIButton);

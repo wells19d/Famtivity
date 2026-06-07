@@ -1,11 +1,13 @@
 //* NavHeader.tsx
 
 import React from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-
+import { setHapticFeedback } from '../hooks/setHapticFeedback';
 import { View, Text, Icons } from '.';
 import { NavParams } from '../navigation/types';
+import hapticFeedback from 'react-native-haptic-feedback';
+import { useCoreInfo } from '../utilities/coreInfo';
 
 type ButtonType = 'None' | 'Back' | 'Cancel' | 'Create' | 'Save' | 'Update';
 
@@ -33,6 +35,8 @@ const NavHeader = ({
   rightAction,
 }: Props) => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
+  const useHaptics = setHapticFeedback();
+  const core = useCoreInfo();
 
   const resolvedLeftButton: ButtonType = leftButton ?? 'Back';
   const resolvedRightButton: ButtonType =
@@ -109,8 +113,13 @@ const NavHeader = ({
       return <View style={styles.side} />;
     }
 
+    const handlePress = () => {
+      useHaptics(core?.profile?.userSettings?.hapticStrength || hapticFeedback);
+      config.action?.();
+    };
+
     return (
-      <Pressable style={styles.side} onPress={config.action}>
+      <TouchableOpacity style={styles.side} onPress={handlePress}>
         <View row centerH style={side === 'right' && styles.rightButton}>
           {side === 'left' && config.icon && <View pr5>{config.icon}</View>}
 
@@ -118,7 +127,7 @@ const NavHeader = ({
 
           {side === 'right' && config.icon && <View pl5>{config.icon}</View>}
         </View>
-      </Pressable>
+      </TouchableOpacity>
     );
   };
 
