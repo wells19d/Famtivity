@@ -13,6 +13,7 @@ const FamilyTasks = () => {
       taskType={familyTasks}
       createMode="family"
       screen="FamilyTasks"
+      title="Family"
     />
   );
 };

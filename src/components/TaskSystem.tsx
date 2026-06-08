@@ -23,10 +23,11 @@ type TaskSystemProps = {
   screen?: string;
   taskType: any[];
   createMode: string;
+  title?: string;
 };
 
 const TaskSystem = (props: TaskSystemProps) => {
-  const { taskType, createMode, screen } = props;
+  const { taskType, createMode, screen, title } = props;
   const theme = useTheme();
   const timelineTheme = theme.timelineList;
 
@@ -110,6 +111,7 @@ const TaskSystem = (props: TaskSystemProps) => {
           createMode={createMode}
           leftButton="Back"
           rightButton="Create"
+          title={title}
         />
         {showToggle && (
           <View alignItems="center">
@@ -145,6 +147,7 @@ const TaskSystem = (props: TaskSystemProps) => {
           createMode={createMode}
           leftButton="Back"
           rightButton="Create"
+          title={title}
         />
         {showToggle && (
           <View alignItems="center">

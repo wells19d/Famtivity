@@ -8,7 +8,14 @@ import TaskSystem from '../components/TaskSystem';
 const MyTasks = () => {
   const { myTasks } = useTaskManager();
 
-  return <TaskSystem taskType={myTasks} createMode="mine" screen="MyTasks" />;
+  return (
+    <TaskSystem
+      taskType={myTasks}
+      createMode="mine"
+      screen="MyTasks"
+      title="Mine"
+    />
+  );
 };
 
 export default MyTasks;

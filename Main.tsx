@@ -135,7 +135,7 @@ const Main: React.FC<MainProps> = props => {
   const [renderDisplay, setRenderDisplay] = useState('main');
   const [currentRoute, setCurrentRoute] = useState('Landing');
 
-  const yourImage = require('./src/images/bg0002.jpg');
+  const yourImage = require('./src/images/bg0004.png');
 
   // Step 1: Handle base state – app readiness and auth
   // this will first display the logo, giving the app extra time to load.
@@ -273,7 +273,7 @@ const styles = {
   },
   overlay: (currentRoute: string) => ({
     ...StyleSheet.absoluteFill,
-    backgroundColor: currentRoute === 'Landing' ? '#f3f3f360' : '#ffffff',
+    // backgroundColor: currentRoute === 'Landing' ? '#f3f3f3c7' : '#ffffff',
   }),
 };
 

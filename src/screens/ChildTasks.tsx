@@ -9,7 +9,12 @@ const ChildTasks = () => {
   const { childTasks } = useTaskManager();
 
   return (
-    <TaskSystem taskType={childTasks} createMode="child" screen="ChildTasks" />
+    <TaskSystem
+      taskType={childTasks}
+      createMode="child"
+      screen="ChildTasks"
+      title="Children"
+    />
   );
 };
 

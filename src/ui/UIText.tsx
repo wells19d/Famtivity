@@ -2,7 +2,7 @@
 import React from 'react';
 import { Text, TextProps, StyleProp, TextStyle } from 'react-native';
 import { useFontStyles } from './UIUtilities';
-import type { FontKey, FontSizeKey } from './UIUtilities';
+import type { ColorKey, FontKey, FontSizeKey } from './UIUtilities';
 
 type UITextProps = TextProps & {
   children?: React.ReactNode;
@@ -12,7 +12,7 @@ type UITextProps = TextProps & {
   rightAlign?: boolean;
   style?: StyleProp<TextStyle>;
   size?: FontSizeKey;
-  color?: string;
+  color?: ColorKey;
   font?: FontKey;
 };
 
@@ -24,7 +24,7 @@ const UIText = ({
   rightAlign = false,
   style,
   size = 'small',
-  color = 'black',
+  color = 'dark',
   font = 'open-6',
   ...props
 }: UITextProps) => {

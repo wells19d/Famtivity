@@ -13,6 +13,7 @@ const PendingTasks = () => {
       taskType={pendingTasks}
       createMode="pending"
       screen="PendingTasks"
+      title="Pending"
     />
   );
 };

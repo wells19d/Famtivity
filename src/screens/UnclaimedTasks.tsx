@@ -13,6 +13,7 @@ const UnclaimedTasks = () => {
       taskType={unclaimedTasks}
       createMode="unclaimed"
       screen="UnclaimedTasks"
+      title="Unclaimed"
     />
   );
 };

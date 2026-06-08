@@ -27,7 +27,7 @@ type IconProps = {
 
 export const IconList = {
   Account: (props: IconProps) => (
-    <MDIcons name="account-circle" size={20} color="#000" {...props} />
+    <MDIcons name="account" size={20} color="#000" {...props} />
   ),
   AddCart: (props: IconProps) => (
     <FAIcons name="cart-plus" size={20} color="#000" {...props} />
@@ -43,6 +43,9 @@ export const IconList = {
   ),
   Barcode: (props: IconProps) => (
     <FAIcons name="barcode" size={20} color="#000" {...props} />
+  ),
+  Bell: (props: IconProps) => (
+    <MDIcons name="bell-outline" size={20} color="#000" {...props} />
   ),
   BookmarkMinus: (props: IconProps) => (
     <MDIcons name="bookmark-remove-outline" size={20} color="#000" {...props} />

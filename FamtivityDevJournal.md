@@ -306,3 +306,17 @@
 ### Struggles
 
 - I hate the landing page... determined that a change is needed. Brainstorming and researching modern dashboard systems / layouts.
+
+## 06-08-2026
+
+### What we did
+
+- Updated design layout for landing page with cards and a new subtle background. (no longer apps within an app view)
+- Updated utility colors over the app to match figma scheme I've been working on for more app consistency.
+- Updated UIText for FontKey types
+- Updated TaskSystem to pass title for NavHeader navigation display
+- Updated task screens for passed title for the NavHeader
+
+### Struggles
+
+- None
