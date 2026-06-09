@@ -13,6 +13,9 @@ console.error = (...args) => {
   if (
     message.includes(
       'A props object containing a "key" prop is being spread into JSX',
+    ) ||
+    message.includes(
+      'Sending `onAnimatedValueUpdate` with no listeners registered.',
     )
   ) {
     return;
@@ -23,6 +26,7 @@ console.error = (...args) => {
 
 LogBox.ignoreLogs([
   'A props object containing a "key" prop is being spread into JSX',
+  'Sending `onAnimatedValueUpdate` with no listeners registered.',
 ]);
 
 const App = require('./App').default;

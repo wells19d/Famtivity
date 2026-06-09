@@ -161,6 +161,9 @@ export const IconList = {
       {...props}
     />
   ),
+  Menu: (props: IconProps) => (
+    <MDIcons name="menu" size={20} color="#000" {...props} />
+  ),
   Pending: (props: IconProps) => (
     <MIIcons name="pending-actions" size={20} color="#000" {...props} />
   ),

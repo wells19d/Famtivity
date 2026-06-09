@@ -320,3 +320,17 @@
 ### Struggles
 
 - None
+
+## 06-09-2026
+
+### What we did
+
+- Replaced landing page avatar concept with a menu button system.
+- Re-integrated reusable `UIBottomSheet` component into the project.
+- Converted `BottomSheet` into a global `BottomSheetContext` system for app-wide modal access.
+- Updated `BottomSheet` to support reusable dynamic `snapPoints` and `innerStyles`.
+
+### Struggles
+
+- Moved `BottomSheet` out of local screen state and into a global setup to avoid `SafeAreaView` clipping and modal rendering issues.
+- Corrected `BottomSheet` open/close timing conflicts that caused animation and state lockups.

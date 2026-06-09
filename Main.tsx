@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { View } from './src/ui';
+import { BottomSheetProvider, View } from './src/ui';
 import LandingPage from './src/screens/LandingPage';
 import MyTasks from './src/screens/MyTasks';
 import FamilyTasks from './src/screens/FamilyTasks';
@@ -252,16 +252,18 @@ const Main: React.FC<MainProps> = props => {
           if (route) setCurrentRoute(route);
         }}
       >
-        <ImageBackground
-          source={yourImage}
-          resizeMode="cover"
-          style={styles.image}
-        >
-          <View style={styles.overlay(currentRoute)} />
-          <SafeAreaView style={{ flex: 1 }}>
-            <Navigation />
-          </SafeAreaView>
-        </ImageBackground>
+        <BottomSheetProvider>
+          <ImageBackground
+            source={yourImage}
+            resizeMode="cover"
+            style={styles.image}
+          >
+            <View style={styles.overlay(currentRoute)} />
+            <SafeAreaView style={{ flex: 1 }}>
+              <Navigation />
+            </SafeAreaView>
+          </ImageBackground>
+        </BottomSheetProvider>
       </NavigationContainer>
     );
   }

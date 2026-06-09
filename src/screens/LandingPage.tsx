@@ -1,18 +1,20 @@
 //* LandingPage.tsx
 
 import React from 'react';
-import { Icons, Text, View } from '../ui';
+import { Icons, Text, View, useBottomSheet } from '../ui';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { NavParams } from '../navigation/types';
 import { useColors } from '../ui/UIUtilities';
 import { useProfile } from '../hooks/useHooks';
 import moment from 'moment';
 import { useTaskManager } from '../utilities/tasks/taskManager';
+import { TouchableOpacity } from 'react-native';
 
 const LandingPage = () => {
   const navigation = useNavigation<NavigationProp<NavParams>>();
   const profile = useProfile();
   const { myTasks, pendingTasks } = useTaskManager();
+  const { openBottomSheet } = useBottomSheet();
 
   const handlePress = (navigate: keyof NavParams) => () => {
     // console.log(`Navigating to ${navigate}`);
@@ -22,7 +24,7 @@ const LandingPage = () => {
   const renderDueToday = (tasks: any[]) => {
     const dueToday = tasks.filter((task: any) => {
       const today = moment().startOf('day');
-      const taskDueDate = moment(task.dueDate).startOf('day');
+      const taskDueDate = moment(task.endTime || task.dueDate).startOf('day');
       return taskDueDate.isSame(today);
     });
 
@@ -81,15 +83,33 @@ const LandingPage = () => {
     );
   };
 
+  const handleMenuPress = () => {
+    openBottomSheet({
+      // snapPoints: [0.01, 1],
+      // innerStyles: { margin: 0 },
+      content: (
+        <View flex p5>
+          <Text size="medium" font="open-8">
+            Menu
+          </Text>
+        </View>
+      ),
+    });
+  };
+
+  const handleAlertPress = () => {
+    // console.log('Alert button pressed');
+  };
+
   return (
     <View flex ph10>
       <View row>
         <View p5>
-          <View style={styles.avatar} centerVH>
-            <Icons.Account size={35} color="#000" />
-          </View>
+          <TouchableOpacity style={styles.menu} onPress={handleMenuPress}>
+            <Icons.Menu size={35} color="#000" />
+          </TouchableOpacity>
         </View>
-        <View flex centerV ph5>
+        <View flex centerV pl10 pr5>
           <Text size="medium" font="open-8">
             Hello, {profile?.firstName}
           </Text>
@@ -98,9 +118,9 @@ const LandingPage = () => {
           </Text>
         </View>
         <View p5 centerV>
-          <View style={styles.alert} centerVH>
+          <TouchableOpacity style={styles.alert} onPress={handleAlertPress}>
             <Icons.Bell size={22.5} color="#000" />
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
       <TaskCard title="My Tasks" large blue bottom top={20}>
@@ -128,6 +148,21 @@ const styles = {
     shadowRadius: 2,
     elevation: 2,
   },
+  menu: {
+    backgroundColor: '#f3f3f3',
+    borderWidth: 1,
+    width: 45,
+    height: 45,
+    borderRadius: 30,
+    borderColor: useColors('gray40'),
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+  },
   alert: {
     backgroundColor: '#f3f3f3',
     borderWidth: 1,
@@ -140,6 +175,8 @@ const styles = {
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 2,
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
   },
   wrapper: (side: 'left' | 'bottom') => ({
     paddingBottom: side === 'bottom' ? 5 : 0,
